@@ -1,0 +1,16 @@
+article {
+    font-size: 2.2em;
+    font-weight: 200;
+    line-height: 70px;
+}
+
+.details-link {
+    background-color: #A4D6E0;
+    padding: 25px;
+    transition: 0.3s;
+    font-size: 0.9em;
+}
+
+.details-link:hover {
+    opacity: 0.8;
+}

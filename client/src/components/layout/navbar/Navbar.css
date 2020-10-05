@@ -1,0 +1,35 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #EF7B45;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.navlink {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+    font-weight: 200;
+    padding: 0 20px;
+}
+
+.navlink:hover {
+    transform: scale(1.1);
+}
+
+.logoNav {
+    width: 15%;
+    transition: 0.2s;
+}
+
+.logoNav:hover {
+    transform: scale(1.1);
+}
+.paco{
+ 
+}
+
