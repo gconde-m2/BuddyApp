@@ -14,7 +14,7 @@ class Signup extends Component {
             password: '',
             email: '',
             cif: '',
-            association: '',
+            associationName: '',
             image:'',
             showUserForm: false,
             showAsocForm: false
@@ -100,7 +100,7 @@ class Signup extends Component {
                     <main>
                         <Row className="justify-content-center">
                             <Col md={{ span: 5 }}>
-                                <h1 className="register-h1">Registro de Asociacion</h1>
+                                <h1 className="register-h1">Registro de Asociación</h1>
                                 <Form onSubmit={this.handleFormSubmit}>
                                     <Form.Group>
                                         <Form.Label>Nombre de usuario</Form.Label>
@@ -112,12 +112,12 @@ class Signup extends Component {
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Asociación</Form.Label>
-                                        <Form.Control type="text" name="associationName" value={this.state.association} onChange={this.handleInputChange} />
+                                        <Form.Control type="text" name="associationName" value={this.state.associationName} onChange={this.handleInputChange} />
                                     </Form.Group>
 
                                     <Form.Group>
                                         <Form.Label>CIF</Form.Label>
-                                        <Form.Control type="text" name="CIF" value={this.state.cif} onChange={this.handleInputChange} />
+                                        <Form.Control type="text" name="cif" value={this.state.cif} onChange={this.handleInputChange} />
                                     </Form.Group>
                                     
                                     <Form.Group>

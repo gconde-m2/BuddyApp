@@ -22,7 +22,7 @@ const userSchema = new Schema({
         type: String,
     },
 
-    CIF: {
+    cif: {
         type: String,
         maxlength: 9,
         minlength: 9

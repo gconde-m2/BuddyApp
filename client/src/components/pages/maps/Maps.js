@@ -12,7 +12,7 @@ class Map extends Component {
         lat: undefined,
         lng: undefined
       },
-      zoom: 11
+      zoom: 17
     }
     
   }
@@ -26,11 +26,7 @@ class Map extends Component {
         this.setState({
           center:{lat:position.coords.latitude,lng:position.coords.longitude}
         })
-       })
-
-       //console.log(position)
-      //this.center.setState({ lat : lat,lng : lng})
-      
+       })      
       
     }
   }
@@ -38,10 +34,10 @@ class Map extends Component {
   render() {
     
     return (
-      // Important! Always set the container height explicitly
+     
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "d"}}
+          bootstrapURLKeys={{ key: "AIzaSyC5xEJjYqtgcgXboLnDMqtXa8QM8jT_eOY"}}
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
         >

@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+
+import './stadistics.css'
 const state = {
     labels: ['January', 'February', 'March',
              'April', 'May'],
@@ -50,7 +52,7 @@ class Stadistics extends Component {
 
         return(
 
-            <Container>
+            <Container className="pushdown">
                 <Row>
                     <Col>
              <div>
