@@ -40,7 +40,7 @@ export default class extends Component {
               <Link to='/'> <img alt="Logotipo" src={logoTitulo} className='logoNav'/> </Link>
             
               <Nav className='navigation'>
-                    
+
                     <Link className='navlink' style={{textDecoration: 'none', color: 'black'}} to="/dogList">Adopta</Link>
                     <Link className='navlink' style={{textDecoration: 'none', color: 'black'}} to="/donation">Ayuda</Link>
                     <Link className='navlink' style={{textDecoration: 'none', color: 'black'}} to="/map">Mapa</Link>
@@ -48,11 +48,12 @@ export default class extends Component {
                     {!this.props.loggedInUser && <Link className='navlink' style={{textDecoration: 'none', color: 'black'}} to="/signup">Registro</Link>}
                     {!this.props.loggedInUser && <div className="navlink" onClick={() => this.handleModal(true)} style={{ marginBottom: '20px' }} variant="dark" size="sm">Login</div>}
                     {this.props.loggedInUser && <div className="navlink" onClick={this.logoutUser}>Cerrar sesión</div>}
+  
                 </Nav>
             </Navbar>
-                    <Modal show={this.state.showModal} onHide={() => this.handleModal(false)}>
+                    <Modal className="paco" show={this.state.showModal} onHide={() => this.handleModal(false)}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Login</Modal.Title>
+                        <Modal.Title className="paco">Login</Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="paco">
                         <Login setTheUser={this.props.setTheUser}  loggedInUser={this.props.loggedInUser} closeModal={() => this.handleModal(false)}  />

@@ -32,9 +32,12 @@ const userSchema = new Schema({
         type: String,
     },
 
-    favourites: {
-        type: [String],
-    },
+    email: {
+        type: String,
+        required: true,
+        default: 'Email-needed',
+        trim: true
+    }
 
 
 },

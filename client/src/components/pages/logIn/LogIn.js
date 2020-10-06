@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-
+import './login.css'
 
 import authService from '../../../service/auth.service'
 
@@ -45,10 +45,10 @@ class Login extends Component {
            
             <Container>
                 <main>
-                    <Row className="justify-content-center">
+                    <Row className=" pepe justify-content-center">
                         <Col md={{ span: 5 }}>
-                            <h1>Login</h1>
-                            <Form onSubmit={this.handleFormSubmit}>
+                            <h1 className="pepe">Login</h1>
+                            <Form className="alfonso" onSubmit={this.handleFormSubmit}>
                                 <Form.Group>
                                     <Form.Label>Nombre de usuario</Form.Label>
                                     <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
@@ -58,8 +58,9 @@ class Login extends Component {
                                     <Form.Label>Contraseña</Form.Label>
                                     <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
                                 </Form.Group>
-
-                                <Button variant="dark" type="submit">Acceder</Button>
+                                <div className="alfonso justify-content-center">
+                                <Button className="alfonso" variant="dark" type="submit">Acceder</Button>
+                                </div>
                             </Form>
                         </Col>
                     </Row>

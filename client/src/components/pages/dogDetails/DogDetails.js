@@ -1,4 +1,5 @@
-import React,  { Component } from 'react'
+import React, { Component } from 'react'
+import Fade from 'react-reveal/Fade'
 
 import { Link } from 'react-router-dom'
 
@@ -9,6 +10,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 import './DogDetails.css'
+import background from './background.png'
 
 class DogDetails extends Component{
     
@@ -29,38 +31,52 @@ class DogDetails extends Component{
     render() {
 
         return (
-            
-            <Container >
+                
+                <Container fluid>
+                    
+                     <Fade clear duration={2000}>
 
-                <h1>{this.state.name}</h1>
+                        <h1 style={{ marginLeft: '5%' }}>{this.state.name}</h1>
+                    
+                     </Fade>
 
-                <Row className='align-items-center' style={{marginBottom: '50px'}}>
+                <Row className='align-items-center justify-content-center' style={{marginBottom: '50px'}}>
 
-                    <Col md={7}>
-
-                        <img className='dogPhoto' src={this.state.imageUrl} alt='Doggy image' />
+                    <Col md={3}>
+                        
+                        <Fade clear duration={2000}>
+                        
+                            <img className='dogPhoto' src={this.state.imageUrl} alt='Doggy image' />
+                            
+                        </Fade>
 
                     </Col>
 
-                    <Col md={5}>
+                    <Col md={7}>
+                        
+                        <Fade clear duration={2000}>
 
                         <article >
 
-                            <p>Edad: {this.state.age} years</p>
+                            <p>Edad: {this.state.age} </p>
 
                             <p>Sexo: {this.state.gender}</p>
 
                             <p>Raza: {this.state.race}</p>
 
-                            <p style={{marginBottom: '40px'}}>Cómo soy: {this.state.description}</p>
+                            <p style={{marginBottom: '40px', width: '60%'}}>Cómo soy: {this.state.description}</p>
 
                             <Link to={`/dogList/${this.state.id}/adopt`} style={{ textDecoration: 'none', color: 'black' }} className='details-link'>¡Adóptame!</Link>
                             
-                            {/* Link para añadir a favoritos */}
+                            </article>
+                            
+                        </Fade>
 
-                            {/* Link para encontrar la ubicacion del perrito? */}
+                        <Fade up duration={3000}>
 
-                        </article>
+                            <img src={background} alt='footprints' id='footprints'/>
+
+                        </Fade>
 
                     </Col>
 
@@ -68,11 +84,19 @@ class DogDetails extends Component{
 
                 <Row>
 
-                    <Link to={'/dogList'} style={{textDecoration: 'none', color: 'black', fontSize: '2em'}} className='button'>Volver</Link>
+                    <Link to={'/dogList'} style={{textDecoration: 'none', color: 'black', fontSize: '2em', marginLeft: '5%'}} className='button'>Volver</Link>
 
                 </Row>
-
-            </Container>
+                
+                </Container>
+                
+          
+            
+            
+                
+            
+            
+         
         )
     }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Fade from 'react-reveal/Fade'
 
 import DogCard from './DogCard'
 import './DogList.css'
@@ -34,6 +35,8 @@ class DogList extends Component {
 
         return (
 
+            <Fade clear duration={800}>
+
             <Container fluid style={{width: '85%', paddingLeft: '7%'}}>
             
                 <h1>Lista de perretes en adopción</h1> 
@@ -52,6 +55,7 @@ class DogList extends Component {
                     
             </Container>                
            
+            </Fade>
         )
 
     }

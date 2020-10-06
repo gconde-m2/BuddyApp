@@ -14,3 +14,10 @@ article {
 .details-link:hover {
     opacity: 0.8;
 }
+
+#footprints {
+    width: 40%;
+    position: fixed;
+    right: 5%;
+    top: 20%;
+}

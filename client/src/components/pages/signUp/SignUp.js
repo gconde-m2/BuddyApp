@@ -1,18 +1,23 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import authService from '../../../service/auth.service'
-
+import './signup.css'
 class Signup extends Component {
     constructor(props) {
         super(props)
         this.state = {
             username: '',
             password: '',
-            showUserForm:false
+            email: '',
+            cif: '',
+            association: '',
+            image:'',
+            showUserForm: false,
+            showAsocForm: false
         }
         this.authService = new authService()
     }
@@ -35,52 +40,101 @@ class Signup extends Component {
             .catch(err => console.log('Error:', { err }))
     }
 
-    handleForm =e =>{
-
-        this.setState({ showUserForm : e})
+    handleFormUser = e => {
+        if (this.state.showAsocForm == false) {
+            this.state.showUserForm == false ? e = true : e = false
+            this.setState({ showUserForm: e })
+        }
+    }
+    handleFormAsoc = e => {
+        if (this.state.showUserForm == false) {
+            this.state.showAsocForm == false ? e = true : e = false
+            this.setState({ showAsocForm: e })
+        }
     }
 
-    render(){
+    render() {
         console.log(this.showUserForm)
-        return(
+        return (
 
             <>
-            <Container >
-            <Row>
-            <Col>
-            <Button onClick={()=> this.handleForm(true)}className="btn btn-dark">crear cuenta como usuario</Button>
-            </Col>
-            <Col>
-            <Button className="btn btn-dark">crear cuenta como asociación</Button>
-            </Col>
-            </Row>
-            </Container>
-              <Container>
-                <main>
+                <Container className=" container-fluid  buttons-sign">
                     <Row className="justify-content-center">
-                        <Col md={{ span: 5 }}>
-                            <h1>Registro de usuario</h1>
-                            <Form onSubmit={this.handleFormSubmit}>
-                                <Form.Group>
-                                    <Form.Label>Nombre de usuario</Form.Label>
-                                    <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
-                                </Form.Group>
-
-                                <Form.Group>
-                                    <Form.Label>ContraseÃ±a</Form.Label>
-                                    <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
-                                </Form.Group>
-
-                                <Button variant="dark" type="submit">Registrarme</Button>
-                            </Form>
+                        <Col md={{ span: 6 }}className="col text-center col-8">
+                            <Button onClick={() => this.handleFormUser(true)} className="btn btn-dark">crear cuenta como usuario</Button>
+                        </Col >
+                        <Col md={{ span: 6 }} className="col text-center col-6">
+                            <Button onClick={() => this.handleFormAsoc(true)} className="btn btn-dark">crear cuenta como asociación</Button>
                         </Col>
                     </Row>
-                </main>
-            </Container>
-            
+                </Container >
+                {this.state.showUserForm && <Container className="block">
+                    <main>
+                        <Row className="justify-content-center">
+                            <Col md={{ span: 5 }}>
+                                <h1 className="register-h1">Registro de usuario</h1>
+                                <Form onSubmit={this.handleFormSubmit}>
+                                    <Form.Group>
+                                        <Form.Label>Nombre de usuario</Form.Label>
+                                        <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
+                                    </Form.Group>
+
+                                    <Form.Group>
+                                        <Form.Label>Email</Form.Label>
+                                        <Form.Control type="text" name="email" value={this.state.email} onChange={this.handleInputChange} />
+                                    </Form.Group>
+                                    <Form.Group>
+                                    
+                                        <Form.Label>Contraseña</Form.Label>
+                                        <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
+                                    </Form.Group>
+                                    <div className="col text-center">
+                                    <Button variant="dark" type="submit">Registrarme</Button>
+                                    </div>
+                                </Form>
+                            </Col>
+                        </Row>
+                    </main>
+                </Container>}
+                {this.state.showAsocForm && <Container className="block">
+                    <main>
+                        <Row className="justify-content-center">
+                            <Col md={{ span: 5 }}>
+                                <h1 className="register-h1">Registro de Asociacion</h1>
+                                <Form onSubmit={this.handleFormSubmit}>
+                                    <Form.Group>
+                                        <Form.Label>Nombre de usuario</Form.Label>
+                                        <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Email</Form.Label>
+                                        <Form.Control type="text" name="email" value={this.state.email} onChange={this.handleInputChange} />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Asociación</Form.Label>
+                                        <Form.Control type="text" name="associationName" value={this.state.association} onChange={this.handleInputChange} />
+                                    </Form.Group>
+
+                                    <Form.Group>
+                                        <Form.Label>CIF</Form.Label>
+                                        <Form.Control type="text" name="CIF" value={this.state.cif} onChange={this.handleInputChange} />
+                                    </Form.Group>
+                                    
+                                    <Form.Group>
+                                        <Form.Label>Contraseña</Form.Label>
+                                        <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
+                                    </Form.Group>
+                                    <div className="col text-center">
+                                    <Button variant="dark" type="submit">Registrarme</Button>
+                                    </div>
+                                </Form>
+                            </Col>
+                        </Row>
+                    </main>
+                </Container>}
+
             </>
         )
-
     }
 }
 
