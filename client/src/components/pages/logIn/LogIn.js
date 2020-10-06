@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import './login.css'
-
+import logo from '../../layout/navbar/logoTitulo.png'
 import authService from '../../../service/auth.service'
 
 class Login extends Component {
@@ -14,7 +14,8 @@ class Login extends Component {
         super(props)
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            message:undefined
         }
         this.authService = new authService()
     }
@@ -27,16 +28,39 @@ class Login extends Component {
     handleFormSubmit = e => {
 
         e.preventDefault()
+        
+        if(this.state.username.length > 0 && this.state.password.length > 0)
+        {
+            this.authService
+                .login(this.state)
+                .then(response => {
 
-        this.authService
-            .login(this.state)
-            .then(response => {
-                this.props.setTheUser(response.data) /////
-                //this.props.history.push('/')
-                this.props.closeModal()
-            })
-            .catch(err => console.log('Erroooooor:', { err }))
-    }
+                        this.setState({ message: response })
+                        this.props.setTheUser(response.data)
+                        
+                        //this.props.history.push('/')
+                        this.props.closeModal()
+                    })
+                    .catch(err => console.log('Erroooooor:', { err }))
+            }
+            else{
+                if(this.state.username.length < 1 && this.state.password.length < 1)
+                {
+                    let value = 'campos vacios'
+                    this.setState({ message: value }) 
+                }
+                else if(this.state.username.length < 1)
+                {
+                    let value = 'introduce el username'
+                    this.setState({ message: value }) 
+
+                }else
+                {
+                    let value = 'introduce la contraseña'
+                    this.setState({ message: value }) 
+                }
+            }
+        }
 
 
     render() {
@@ -45,10 +69,13 @@ class Login extends Component {
            
             <Container>
                 <main>
+                    
+                        <img className="logo" src={logo}></img>
+
                     <Row className=" pepe justify-content-center">
                         <Col md={{ span: 5 }}>
-                            <h1 className="pepe">Login</h1>
-                            <Form className="alfonso" onSubmit={this.handleFormSubmit}>
+                            <h1 className="ptitle">Login</h1>
+                            <Form className="formu" onSubmit={this.handleFormSubmit}>
                                 <Form.Group>
                                     <Form.Label>Nombre de usuario</Form.Label>
                                     <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
@@ -61,10 +88,15 @@ class Login extends Component {
                                 <div className="alfonso justify-content-center">
                                 <Button className="alfonso" variant="dark" type="submit">Acceder</Button>
                                 </div>
+                        {/* <div className="alert alert-danger" role="alert">
+  
+                        {this.state.message}
+                        </div> */}
                             </Form>
                         </Col>
                     </Row>
                 </main>
+                        
             </Container>
             
         )

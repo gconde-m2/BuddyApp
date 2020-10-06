@@ -6,6 +6,9 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import authService from '../../../service/auth.service'
 import './signup.css'
+
+import logo from '../../layout/navbar/logoTitulo.png'
+
 class Signup extends Component {
     constructor(props) {
         super(props)
@@ -58,19 +61,23 @@ class Signup extends Component {
         return (
 
             <>
+            <div className="logosign">
+                <img  src={logo}></img>
+
+            </div>
                 <Container className=" container-fluid  buttons-sign">
                     <Row className="justify-content-center">
                         <Col md={{ span: 6 }}className="col text-center col-8">
-                            <Button onClick={() => this.handleFormUser(true)} className="btn btn-dark">crear cuenta como usuario</Button>
+                            <Button onClick={() => this.handleFormUser(true)} >crear cuenta como usuario</Button>
                         </Col >
                         <Col md={{ span: 6 }} className="col text-center col-6">
-                            <Button onClick={() => this.handleFormAsoc(true)} className="btn btn-dark">crear cuenta como asociación</Button>
+                            <Button onClick={() => this.handleFormAsoc(true)} >crear cuenta como asociación</Button>
                         </Col>
                     </Row>
                 </Container >
                 {this.state.showUserForm && <Container className="block">
                     <main>
-                        <Row className="justify-content-center">
+                        <Row className="justify-content-center formu">
                             <Col md={{ span: 5 }}>
                                 <h1 className="register-h1">Registro de usuario</h1>
                                 <Form onSubmit={this.handleFormSubmit}>
@@ -98,7 +105,7 @@ class Signup extends Component {
                 </Container>}
                 {this.state.showAsocForm && <Container className="block">
                     <main>
-                        <Row className="justify-content-center">
+                        <Row className="justify-content-center formu">
                             <Col md={{ span: 5 }}>
                                 <h1 className="register-h1">Registro de Asociación</h1>
                                 <Form onSubmit={this.handleFormSubmit}>

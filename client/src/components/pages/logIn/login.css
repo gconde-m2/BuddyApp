@@ -1,9 +1,29 @@
-.pepe{
+.ptitle{
 
-    margin-top: 0px;
-    padding-top: 0px;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+    text-align: center;
 }
-.alfon{
+.formu{
 
     text-align: center;
+    padding-bottom: 50px;
+}
+.formu button{
+    background-color:#EF7B45;
+    border-color:#EF7B45 ;
+}
+
+.logo{
+    padding-bottom: 0;
+    margin-bottom: 0;
+    width:200px;
+}
+.logo img{
+
+    width:300px;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }

@@ -2,7 +2,8 @@ import React, {Component,useState} from 'react'
 
 import GoogleMapReact from 'google-map-react';
 
-
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+const Marker = ({ text }) => <div>{text}</div>;
 
 class Map extends Component {
   constructor(props) {
@@ -37,10 +38,15 @@ class Map extends Component {
      
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyC5xEJjYqtgcgXboLnDMqtXa8QM8jT_eOY"}}
+          bootstrapURLKeys={{ key: "pepe"}}
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
-        >
+       
+        ><Marker
+        lat={this.state.center.lat}
+        lng={this.state.center.lng}
+        text="My Marker"
+      />
           
         </GoogleMapReact>
       </div>

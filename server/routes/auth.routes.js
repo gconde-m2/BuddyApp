@@ -10,6 +10,10 @@ router.post('/signup', (req, res, next) => {
 
     const username = req.body.username;
     const password = req.body.password;
+    const cif = req.body.cif
+    const email = req.body.email
+    const associationName = req.body.associationName
+    const image = req.body.image
 
     if (!username || !password) {
         res.status(400).json({
@@ -48,7 +52,11 @@ router.post('/signup', (req, res, next) => {
 
         const aNewUser = new User({ //
             username: username,
-            password: hashPass
+            password: hashPass,
+            cif: cif,
+            email:email,
+            associationName:associationName,
+            image:image
         });
 
         aNewUser.save(err => {

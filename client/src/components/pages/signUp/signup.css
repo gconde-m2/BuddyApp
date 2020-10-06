@@ -1,8 +1,12 @@
 .buttons-sign{
 
 
-    margin-top: 200px;
-   
+    margin-top: 50px;
+    
+}
+.buttons-sign button{
+    background-color:#EF7B45;
+    border-color:#EF7B45 ;
 }
 
 .paco{
@@ -17,4 +21,26 @@ padding-top: 0px;
 .register-h1{
 
     margin-top:100px;
+}
+.formu{
+
+    text-align: center;
+    padding-bottom: 50px;
+}
+.formu button{
+    background-color:#EF7B45;
+    border-color:#EF7B45 ;
+}
+.logosign{
+   
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+}
+.logosign img{
+    padding-bottom: 0;
+    margin-bottom: 0;
+    width:200px;
+    margin-top:120px;
+   
 }
