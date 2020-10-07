@@ -19,7 +19,7 @@ const userSchema = new Schema({
     },
 
     associationName: {
-        type: String,
+        type: String
     },
 
     cif: {
@@ -28,8 +28,8 @@ const userSchema = new Schema({
         minlength: 9
     },
 
-    image: {
-        type: String,
+    imageUrl: {
+        type: String
     },
 
     email: {
@@ -39,9 +39,7 @@ const userSchema = new Schema({
         trim: true
     }
 
-
-},
-    {
+},  {
         timestamps: true
         
     })

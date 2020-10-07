@@ -1,137 +1,199 @@
-import React, {Component} from 'react'
-import {Bar, Line, Pie, Doughnut} from 'react-chartjs-2'
+import React, { Component } from 'react'
+import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import destinodata from '../../../data/destino'
+import evolution from '../../../data/evolucion'
+import principales from '../../../data/principales'
+import tasa from '../../../data/tasa'
 
 import './stadistics.css'
+
+
+console.log(destinodata.Datos.Metricas[0].Datos)
+
+
 const state = {
-    labels: ['January', 'February', 'March',
-             'April', 'May'],
-    datasets: [
-      {
-        label: 'Rainfall',
-        backgroundColor: 'rgba(75,192,192,1)',
-        borderColor: 'rgba(0,0,0,1)',
-        borderWidth: 2,
-        data: [65, 59, 80, 81, 56]
-      }
-    ]
-  }
-  const state2 = {
-    labels: ['January', 'February', 'March',
-             'April', 'May'],
-    datasets: [
-      {
-        label: 'Rainfall',
-        backgroundColor: [
-          '#B21F00',
-          '#C9DE00',
-          '#2FDE00',
-          '#00A6B4',
-          '#6800B4'
-        ],
-        hoverBackgroundColor: [
+  labels: [],
+  datasets: [
+    {
+      label: 'nº de perros',
+      backgroundColor: 'rgba(239, 123, 69, 0.4)',
+      borderColor: 'rgba(0,0,0,9)',
+      borderWidth: 1,
+      data: []
+    }
+  ]
+}
+const state2 = {
+  labels: [],
+  datasets: [
+    {
+      label: 'destino',
+      backgroundColor: [
+        '#C2CFFF',
+        '#CB99FF',
+        '#FFC3BD',
+        '#C7C8FF',
+        '#FFAEEF',
+        '#80A2FF',
+        '#ADA8FF',
+        '#FFC8B8',
+        '#FFCCF3',
+
+      ],
+      hoverBackgroundColor: [
         '#501800',
         '#4B5000',
         '#175000',
         '#003350',
         '#35014F'
-        ],
-        data: [65, 59, 80, 81, 56]
-      }
-    ]
-  }
+      ],
+      data: []
+    }
+  ]
+}
+const state3 = {
+  labels: [],
+  datasets: [
+    {
+      label: 'destino',
+      backgroundColor:
+        'rgba(239, 123, 69, 0.6)',
 
+
+
+      hoverBackgroundColor:
+        '#501800',
+
+      data: []
+    }
+  ]
+}
+
+const state4 = {
+  labels: [],
+  datasets: [
+    {
+      label: 'destino',
+      backgroundColor:
+        'rgba(239, 123, 69, 0.6)',
+
+
+
+      hoverBackgroundColor:
+        '#501800',
+
+      data: []
+    }
+  ]
+}
+
+destinodata.Datos.Metricas[0].Datos.forEach(elm => {
+  state2.labels.push(elm.Parametro)
+  state2.datasets[0].data.push(elm.Valor)
+})
+evolution.Datos.Metricas[0].Datos.forEach(elm => {
+  state.labels.push(elm.Parametro)
+  state.datasets[0].data.push(elm.Valor)
+})
+principales.Datos.Metricas[0].Datos.forEach(elm => {
+  state3.labels.push(elm.Parametro)
+  state3.datasets[0].data.push(elm.Valor)
+})
+
+tasa.Datos.Metricas[0].Datos.forEach(elm => {
+  state4.labels.push(elm.Parametro)
+  state4.datasets[0].data.push(elm.Valor)
+})
 class Stadistics extends Component {
 
+  render() {
+
+    return (
+
+      <Container className="pushdown">
+        <Row >
+          <Col md={{ span: 6 }}>
+            
+              <Line
+                data={state}
+                
+                options={{
+                  title: {
+                    display: true,
+                    text: 'Evolución del número de perros recogidos por refugios y protectoras en España',
+                    fontSize: 20
+                  },
+                  legend: {
+                    display: false,
+                    position: 'right'
+                  }
+                }}
+              />
+            
+          </Col>
+
+            <Col md={{ span: 6 }}>
+            
+            <Doughnut
+              data={state2}
+              options={{
+                title: {
+                  display: true,
+                  text: 'Destino de los perros',
+                  fontSize: 20
+                },
+                legend: {
+                  display: true,
+                  position: 'right'
+                }
+              }}
+              />
+          </Col>
+
+              </Row>
+              <Row>
+          <Col>
+            <Bar
+              data={state4}
+              options={{
+                title: {
+                  display: true,
+                  text: "Tasa de animales recuperados que llegan a refugios en España",
+                  fontSize: 20
+                },
+  
+                legend: {
+                  display: false,
+                  position: 'right'
+                }
+              }}
+            />
+    
+            <Bar
+              data={state3}
+              options={{
+                title: {
+                  display: true,
+                  text: "Principales motivos para el abandono de animales de compañía en 2018 en España",
+                  fontSize: 20
+                },
+                legend: {
+                  display: false,
+                  position: 'right'
+                }
+              }}
+            />
+          </Col>
+        </Row>
 
 
-    render(){
-
-        return(
-
-            <Container className="pushdown">
-                <Row>
-                    <Col>
-             <div>
-        <Bar
-          data={state}
-          options={{
-            title:{
-              display:true,
-              text:'Average Rainfall per month',
-              fontSize:20
-            },
-            legend:{
-              display:true,
-              position:'right'
-            }
-          }}
-        />
-      </div>
-      </Col>
-      <Col>
-      <div>
-        <Line
-          data={state}
-          options={{
-            title:{
-              display:true,
-              text:'Average Rainfall per month',
-              fontSize:20
-            },
-            legend:{
-              display:true,
-              position:'right'
-            }
-          }}
-        />
-      </div>
-      </Col>
-      </Row>
-      <Row>
-      <Col>
-      
-        <Pie
-          data={state2}
-          options={{
-            title:{
-              display:true,
-              text:'Average Rainfall per month',
-              fontSize:20
-            },
-            legend:{
-              display:true,
-              position:'right'
-            }
-          }}
-        />
-        
-        </Col>
-<Col>
-        <Doughnut
-          data={state2}
-          options={{
-            title:{
-              display:true,
-              text:'Average Rainfall per month',
-              fontSize:20
-            },
-            legend:{
-              display:true,
-              position:'right'
-            }
-          }}
-        />
-      
-      </Col>
-      </Row>
-            </Container>
-        )
-
-    }
+      </Container>
+    )
+  }
 }
 
 export default Stadistics

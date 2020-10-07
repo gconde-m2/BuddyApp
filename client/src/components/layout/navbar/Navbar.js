@@ -47,6 +47,7 @@ export default class extends Component {
                     <Link className='navlink' style={{textDecoration: 'none', color: 'black'}} to="/stadistics">Datos</Link>
                     {!this.props.loggedInUser && <Link className='navlink' style={{textDecoration: 'none', color: 'black'}} to="/signup">Registro</Link>}
                     {!this.props.loggedInUser && <div className="navlink" onClick={() => this.handleModal(true)} style={{ marginBottom: '20px' }} variant="dark" size="sm">Login</div>}
+                    {this.props.loggedInUser && <Link to = "/perfil" className="navlink"  style={{textDecoration: 'none', color: 'black'}}>Perfil</Link>}
                     {this.props.loggedInUser && <div className="navlink" onClick={this.logoutUser}>Cerrar sesión</div>}
   
                 </Nav>

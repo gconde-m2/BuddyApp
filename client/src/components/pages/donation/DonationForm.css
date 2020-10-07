@@ -1,0 +1,19 @@
+.donation-form {
+    font-size: 1.5em;
+    font-weight: 200;
+}
+
+.donation-form label, select {
+    font-size: 1.5em;
+    font-weight: 200;
+    padding: 15px;
+}
+
+.donate img {
+    box-shadow: 0 20px 30px 0 #A4D6E0;
+    transition: 0.3s;
+}
+
+.donate img:hover {
+    opacity: 0.6;
+}

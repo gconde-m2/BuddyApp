@@ -12,24 +12,22 @@
 .navlink {
     text-decoration: none;
     color: black;
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: 200;
     padding: 0 20px;
 }
 
 .navlink:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 .logoNav {
-    width: 15%;
+    width: 20%;
     transition: 0.2s;
+    padding-left: 15px;
+    padding-top: 20px;
 }
 
 .logoNav:hover {
     transform: scale(1.1);
 }
-.paco{
- 
-}
-

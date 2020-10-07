@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Fade from 'react-reveal/Fade'
 
 import DogCard from './DogCard'
+import SearchBar from '../searchBar/SearchBar'
 import './DogList.css'
 
 import Container from 'react-bootstrap/Container'
@@ -29,6 +30,37 @@ class DogList extends Component {
             .catch(error => console.log('Error!', error))
     }
 
+    filterDogs = (sexValue) => {
+
+        
+        console.log(sexValue)
+
+        this.setState({ dogs: this.state.dogs.filter(elm => elm.gender == (sexValue)) })
+        
+        // this.setState({ dogs: this.state.dogs.filter(elm => elm.age === ageValue)})
+        
+        // this.setState({ dogs: this.state.dogs.filter(elm => elm.gender == sexValue)})
+        
+        // if (ageValue) {
+            
+        //     this.setState({ dogs: this.state.dogs.filter(elm => (elm.age === ageValue)) })
+        
+        // } else if (sexValue) {
+            
+        //     this.setState({ dogs: this.state.dogs.filter(elm => (elm.gender === sexValue)) })
+        
+        // } 
+        // else {
+            
+        //     this.setState({ dogs: this.state.dogs.filter(elm => (elm.age === ageValue) && (elm.gender === sexValue)) } )
+        // }
+    }
+
+    filterDogAge = (ageValue) => {
+
+         this.setState({ dogs: this.state.dogs.filter(elm => elm.age == ageValue)})
+
+    }
 
 
     render() {
@@ -40,6 +72,8 @@ class DogList extends Component {
             <Container fluid style={{width: '85%', paddingLeft: '7%'}}>
             
                 <h1>Lista de perretes en adopción</h1> 
+                    
+                    <SearchBar filterMethod={this.filterDogs} filterMethodAge={this.filterDogAge} refreshList={this.loadDogs} />
                 
                 <Row className='justify-content-around'>
 

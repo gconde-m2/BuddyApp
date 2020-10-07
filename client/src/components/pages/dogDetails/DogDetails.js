@@ -10,7 +10,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 import './DogDetails.css'
-import background from './background.png'
+import dcha from './dcha.png'
+import izqda from './izqda.png'
 
 class DogDetails extends Component{
     
@@ -32,13 +33,13 @@ class DogDetails extends Component{
 
         return (
                 
-                <Container fluid>
+            <Container fluid>
                     
-                     <Fade clear duration={2000}>
+                <Fade clear duration={2000}>
 
-                        <h1 style={{ marginLeft: '5%' }}>{this.state.name}</h1>
+                    <h1 style={{ marginLeft: '5%' }}>{this.state.name}</h1>
                     
-                     </Fade>
+                </Fade>
 
                 <Row className='align-items-center justify-content-center' style={{marginBottom: '50px'}}>
 
@@ -72,13 +73,31 @@ class DogDetails extends Component{
                             
                         </Fade>
 
-                        <Fade up duration={3000}>
-
-                            <img src={background} alt='footprints' id='footprints'/>
-
-                        </Fade>
-
                     </Col>
+
+                    <Fade clear delay = {1300}>
+
+                        <img src={izqda} alt='patita de perro' id='footprint1' />
+
+                    </Fade>
+
+                    <Fade Fade clear delay = {1000} >
+
+                        <img src={dcha} alt='patita de perro' id='footprint2' />
+
+                    </Fade>
+
+                     <Fade Fade clear delay = {700} >
+
+                        <img src={izqda} alt='patita de perro' id='footprint3' />
+
+                    </Fade>
+
+                     <Fade Fade clear delay = {400} >
+
+                        <img src={dcha} alt='patita de perro' id='footprint4' />
+
+                    </Fade>
 
                 </Row>
 
@@ -87,16 +106,8 @@ class DogDetails extends Component{
                     <Link to={'/dogList'} style={{textDecoration: 'none', color: 'black', fontSize: '2em', marginLeft: '5%'}} className='button'>Volver</Link>
 
                 </Row>
-                
-                </Container>
-                
-          
-            
-            
-                
-            
-            
-         
+                 
+            </Container>
         )
     }
 

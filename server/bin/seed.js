@@ -45,6 +45,24 @@ const dogs = [
         gender: 'Hembra',
         description: 'Tengo un carácter tranquilo, soy muy calmada y es raro que me ponga nerviosa por algo. Me gusta mucho que me acaricien las orejas y jugar con mi hueso de goma',
         imageUrl: 'https://fordogtrainers.es/images/razas-de-perros/P/perro-de-raza-pincher-aleman.jpg'
+    },
+
+    {
+        name: 'Toby',
+        age: '4',
+        race: 'Pastor alemán',
+        gender: 'Macho',
+        description: 'Mi antigua familia me dejó en una gasolinera este verano, pero a pesar de eso sigo siendo muy alegre y juguetón. Me gusta mucho que me lancen una pelota para ir a buscarla y conocer a nuevos perritos',
+        imageUrl: 'https://perrosdomesticos.org/wp-content/uploads/2020/03/pastor-alem%C3%A1n.jpg'
+    },
+
+    {
+        name: 'Lola',
+        age: '2',
+        race: 'Beagle',
+        gender: 'Hembra',
+        description: 'Lo que más me gusta hacer es ir correteando a todos lados persiguiendo mariposas. Mi comida favorita son las chuches para perros con forma de hueso. Conmigo nunca te vas a aburrir',
+        imageUrl: 'https://www.zooportraits.com/wp-content/uploads/2018/06/shutterstock_528653692.jpg'
     }
 ]
 
@@ -92,4 +110,3 @@ Dog.create(dogs)
 // ]
 
 // mongoose.connection.collections['users'].drop()
-

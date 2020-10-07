@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
+
 import Index from './pages/Index/Index'
 import Navigation from './layout/navbar/Navbar'
+import Footer from './layout/footer/Footer'
 import SignUp from './pages/signUp/SignUp'
 import LogIn from './pages/logIn/LogIn'
 import Maps from './pages/maps/Maps'
 import Stadistics from './pages/stadistics/Stadistics'
 import Donation from './pages/donation/Donation'
-import Footer from './layout/footer/Footer'
+import DonationForm from './pages/donation/DonationForm'
 import DogList from './pages/dogList/DogList'
 import DogDetails from './pages/dogDetails/DogDetails'
 import Profile from "./pages/profile/Profile"
@@ -46,7 +48,8 @@ class App extends Component {
           <Route path = "/login"  render={props => <LogIn setTheUser={this.setTheUser} {...props} />} />
           <Route path = "/map"  render= {() => <Maps/>} />
           <Route path = "/stadistics"  render= {() => <Stadistics/>} />
-          <Route path = "/donation"  render = {() => <Donation/>} />
+          <Route path="/donation" exact render={() => <Donation />} />
+          <Route path="/donation/donationForm" render={() => <DonationForm />} />
           <Route path = "/profile"  render = {() => <Profile/>} />
 
         </Switch>

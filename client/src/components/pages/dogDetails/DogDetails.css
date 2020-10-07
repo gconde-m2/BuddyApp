@@ -15,9 +15,47 @@ article {
     opacity: 0.8;
 }
 
-#footprints {
+/* #footprints {
     width: 40%;
     position: fixed;
     right: 5%;
     top: 20%;
+} */
+
+#footprint1 {
+
+    height: 4%;
+    object-fit: cover;
+    position: fixed;
+    top: 20%;
+    right: 20%;
 }
+
+ #footprint2 {
+
+    height: 7%;
+    object-fit: cover;
+    position: fixed;
+    top: 32%;
+    right: 12%;
+ }
+
+  #footprint3 {
+
+    height: 10%;
+    object-fit: cover;
+    position: fixed;
+    top: 45%;
+    right: 20%;
+ }
+
+  #footprint4 {
+
+    height: 15%;
+    object-fit: cover;
+    position: fixed;
+    top: 65%;
+    right: 10%;
+ }
+
+
