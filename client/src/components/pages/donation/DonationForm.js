@@ -25,14 +25,14 @@ class DonationForm extends Component {
 
     componentDidMount = () => this.loadUsers()
 
-    loadUsers() {
+    // loadUsers() {
         
-        this.UserService
-            .getUsers()
-            .then(response => this.setState({ users: response.data }))
-            .catch(error => console.log('Error!', error))
+    //     this.UserService
+    //         .getUsers()
+    //         .then(response => this.setState({ users: response.data }))
+    //         .catch(error => console.log('Error!', error))
     
-    }
+    // }
 
 
     render() {
@@ -49,7 +49,7 @@ class DonationForm extends Component {
                     
                         <Col md={12}>
                         
-                            <h1 style={{paddingLeft: '9%'}}>Haz tu donativo</h1>
+                            <h1 style={{paddingLeft: '14%'}}>Haz tu donativo</h1>
 
                         </Col>
 
@@ -57,23 +57,23 @@ class DonationForm extends Component {
 
                     <Row className='justify-content-center align-items-center'>
                     
-                        <Col md={5}>
+                        <Col md={4}>
 
                             <form className='donation-form'>
 
                                 <label style={{paddingRight: '30px'}}>Nombre</label>
                     
-                                <input type='text' placeholder='Tu nombre' /> <br></br>
+                                <input type='text' placeholder='Tu nombre' name='name'/> <br></br>
 
                         
                                 <label>Apellidos</label>
                         
-                                <input type='text' placeholder='Tus apellidos' /> <br></br>
+                                <input type='text' placeholder='Tus apellidos' name='surname'/> <br></br>
 
 
                                 <label>Cantidad</label>
 
-                                <input type='text' placeholder='Cantidad' /> <br></br>
+                                <input type='text' placeholder='Cantidad' name='quantity'/> <br></br>
 
 
                                 <select name='associationName' style={{marginLeft: '15px', marginBottom: '80px'}}>

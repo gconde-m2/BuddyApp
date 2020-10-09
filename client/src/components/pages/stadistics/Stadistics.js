@@ -11,10 +11,6 @@ import tasa from '../../../data/tasa'
 
 import './stadistics.css'
 
-
-console.log(destinodata.Datos.Metricas[0].Datos)
-
-
 const state = {
   labels: [],
   datasets: [

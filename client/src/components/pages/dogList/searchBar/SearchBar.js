@@ -11,33 +11,35 @@ class SearchBar extends Component {
             age: '',
         }
     }
+    
 
-    handleChangeSex = (e) => {
+    handleChangeSex = e => {
             
-        // const newState = { age: e.target.value }
         const newState = { sex: e.target.value }
+
+        this.setState(newState, () => this.props.filterMethod(this.state.sex))
             
         // this.setState(newState, () => this.props.filterMethod(this.state.age))
         // this.setState(newState2, () => this.props.filterMethod(this.state.sex))
 
         // let newState = e.target.name === 'sex' ? { sex: e.target.value } : { age: e.target.value }
 
-        this.setState(newState, () => this.props.filterMethod(this.state.sex))
-
-        console.log(this.state.sex)
-
-        this.props.refreshList()
-
     }
     
-    handleChangeAge = (e) => {
+    handleChangeAge = e => { 
 
         const newState = { age: e.target.value }
         
         this.setState(newState, () => this.props.filterMethodAge(this.state.age))
-
-        this.props.refreshList()
+ 
     }
+
+
+    // handleInputChange = e => {
+    //     let { name, value } = e.target
+    //     this.setState({ [name]: value })
+    //     this.setState(this.state, () => this.props.filterMethod(this.searchDogs))
+    // }
     
 
     render() {
@@ -49,9 +51,11 @@ class SearchBar extends Component {
 
                 <form>
 
-                    <select name='sex' onChange={this.handleChangeSex}>
+                    <select name='sex' onChange={this.handleChangeSex} >
                         
-                        <option>Sexo</option>
+                        {/* <select name = 'sex' onChange = { this.handleInputChange } > */}
+                        
+                        <option value=''>Sexo</option>
 
                         <option value='Macho'>Macho</option>
 
@@ -61,7 +65,9 @@ class SearchBar extends Component {
 
                     <label>Años</label>
                     
-                    <input type='text' onChange={this.handleChangeAge}/>
+                    <input type='text' onChange={this.handleChangeAge} />
+
+                    {/* <input type='text'  onChange={this.handleInputChange} /> */}
 
                 </form>
 

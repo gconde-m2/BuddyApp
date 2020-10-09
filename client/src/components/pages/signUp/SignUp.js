@@ -57,7 +57,7 @@ class Signup extends Component {
     }
 
     render() {
-        console.log(this.showUserForm)
+       
         return (
 
             <>
@@ -68,10 +68,10 @@ class Signup extends Component {
                 <Container className=" container-fluid  buttons-sign">
                     <Row className="justify-content-center">
                         <Col md={{ span: 6 }}className="col text-center col-8">
-                            <Button onClick={() => this.handleFormUser(true)} >crear cuenta como usuario</Button>
+                            <Button onClick={() => this.handleFormUser(true)} >Crear cuenta como usuario</Button>
                         </Col >
                         <Col md={{ span: 6 }} className="col text-center col-6">
-                            <Button onClick={() => this.handleFormAsoc(true)} >crear cuenta como asociación</Button>
+                            <Button onClick={() => this.handleFormAsoc(true)} >Crear cuenta como asociación</Button>
                         </Col>
                     </Row>
                 </Container >

@@ -34,10 +34,10 @@ const dogSchema = new Schema({
         type: [String]
     },
 
-    // owner: {
-    //     type: mongoose.SchemaTypes.ObjectId,
-    //     rel: 'User'
-    // }
+    owner: {
+        type: mongoose.SchemaTypes.ObjectId,
+        rel: 'User'
+    }
 
 },
     {

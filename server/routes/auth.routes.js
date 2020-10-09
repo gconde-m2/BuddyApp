@@ -10,11 +10,14 @@ router.post('/signup', (req, res, next) => {
 
     const username = req.body.username;
     const password = req.body.password;
-    const cif = req.body.cif
     const email = req.body.email
+    const cif = req.body.cif
     const associationName = req.body.associationName
     const image = req.body.image
-
+  
+    
+    console.log(username)
+    console.log(associationName)
     if (!username || !password) {
         res.status(400).json({
             message: 'Empty fields'
@@ -49,16 +52,27 @@ router.post('/signup', (req, res, next) => {
 
         const salt = bcrypt.genSaltSync(10);
         const hashPass = bcrypt.hashSync(password, salt);
-
-        const aNewUser = new User({ //
-            username: username,
-            password: hashPass,
-            cif: cif,
-            email:email,
-            associationName:associationName,
-            image:image
-        });
-
+        let anewUser = new User
+        if(req.body.cif)
+        {
+            console.log("estoy entrandoooooo")
+            aNewUser = new User({ //
+                username: username,
+                password: hashPass,
+                cif: cif,
+                email:email,
+                associationName:associationName,
+                
+            });
+        }else{
+            aNewUser = new User({ //
+                username: username,
+                password: hashPass,
+                email:email,
+               
+            });
+        }
+            
         aNewUser.save(err => {
             if (err) {
                 res.status(500).json({
@@ -67,8 +81,6 @@ router.post('/signup', (req, res, next) => {
                 return;
             }
 
-            // Automatically log in user after sign up
-            // .login() here is actually predefined passport method
             req.login(aNewUser, (err) => {
 
                 if (err) {
@@ -78,8 +90,7 @@ router.post('/signup', (req, res, next) => {
                     return;
                 }
 
-                // Send the user's information to the frontend
-                // We can use also: res.status(200).json(req.user);
+    
                 res.status(200).json(aNewUser);
             });
         });
@@ -97,13 +108,10 @@ router.post('/login', (req, res, next) => {
         }
 
         if (!theUser) {
-            // "failureDetails" contains the error messages
-            // from our logic in "LocalStrategy" { message: '...' }.
             res.status(401).json(failureDetails);
             return;
         }
 
-        // save user in session
         req.login(theUser, (err) => {
             if (err) {
                 res.status(500).json({
@@ -112,7 +120,7 @@ router.post('/login', (req, res, next) => {
                 return;
             }
 
-            // We are now logged in (that's why we can also send req.user)
+         
             res.status(200).json(theUser);
         });
     })(req, res, next);
@@ -121,7 +129,7 @@ router.post('/login', (req, res, next) => {
 
 
 router.post('/logout', (req, res, next) => {
-    // req.logout() is defined by passport
+ 
     req.logout();
     res.status(200).json({
         message: 'Log out success!'

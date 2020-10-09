@@ -17,6 +17,7 @@ class Map extends Component {
     }
     
   }
+  
   async componentDidMount() {
  
     if (navigator.geolocation) {
@@ -38,7 +39,7 @@ class Map extends Component {
      
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "pepe"}}
+          bootstrapURLKeys={{ key: "PEPEY"}}
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
        
