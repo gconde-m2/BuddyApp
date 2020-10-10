@@ -53,9 +53,9 @@ class App extends Component {
           <Route path = "/stadistics"  render= {() => <Stadistics/>} />
           <Route path="/donation" exact render={() => <Donation />} />
           <Route path="/donation/donationForm" render={() => <DonationForm />} />
-          <Route path = "/profile"  exact render = {(props) => <Profile loggedInUser={this.state.loggedInUser } {...props}/>} />
+          <Route path = "/profile"  exact render = {props => <Profile loggedInUser={this.state.loggedInUser } {...props}/>} />
           <Route path = "/profile/profile-dogList/:dog_id"  render = {(props) => <ProDogDetails loggedInUser={this.state.loggedInUser } {...props}/>} />
-          <Route path="/profile/newDog" render={(props) => <NewDog loggedInUser={this.state.loggedInUser} {...props} /> } />
+          <Route path="/profile/newDog" render={props => <NewDog loggedInUser={this.state.loggedInUser} {...props} /> } />
         </Switch>
         <Footer/>
       </>

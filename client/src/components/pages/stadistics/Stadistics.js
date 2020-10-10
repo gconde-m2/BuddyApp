@@ -4,10 +4,10 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import destinodata from '../../../data/destino'
-import evolution from '../../../data/evolucion'
-import principales from '../../../data/principales'
-import tasa from '../../../data/tasa'
+import destiny from '../../../data/destiny'
+import evolution from '../../../data/evolution'
+import main from '../../../data/main'
+import tax from '../../../data/tax'
 
 import './stadistics.css'
 
@@ -87,7 +87,7 @@ const state4 = {
   ]
 }
 
-destinodata.Datos.Metricas[0].Datos.forEach(elm => {
+destiny.Datos.Metricas[0].Datos.forEach(elm => {
   state2.labels.push(elm.Parametro)
   state2.datasets[0].data.push(elm.Valor)
 })
@@ -95,12 +95,12 @@ evolution.Datos.Metricas[0].Datos.forEach(elm => {
   state.labels.push(elm.Parametro)
   state.datasets[0].data.push(elm.Valor)
 })
-principales.Datos.Metricas[0].Datos.forEach(elm => {
+main.Datos.Metricas[0].Datos.forEach(elm => {
   state3.labels.push(elm.Parametro)
   state3.datasets[0].data.push(elm.Valor)
 })
 
-tasa.Datos.Metricas[0].Datos.forEach(elm => {
+tax.Datos.Metricas[0].Datos.forEach(elm => {
   state4.labels.push(elm.Parametro)
   state4.datasets[0].data.push(elm.Valor)
 })
@@ -158,7 +158,7 @@ class Stadistics extends Component {
               options={{
                 title: {
                   display: true,
-                  text: "Tasa de animales recuperados que llegan a refugios en España",
+                  text: "tax de animales recuperados que llegan a refugios en España",
                   fontSize: 20
                 },
   
@@ -174,7 +174,7 @@ class Stadistics extends Component {
               options={{
                 title: {
                   display: true,
-                  text: "Principales motivos para el abandono de animales de compañía en 2018 en España",
+                  text: "main motivos para el abandono de animales de compañía en 2018 en España",
                   fontSize: 20
                 },
                 legend: {

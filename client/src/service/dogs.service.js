@@ -13,5 +13,5 @@ export default class DogsService {
     getOneDog = id => this.api.get(`/getOneDog/${id}`)
     newDog = dog => this.api.post('newDog', dog)
     editDog = (id, dog) => this.api.put(`/editDog/${id}`, dog)
-    deleteDog = (id) => this.api.get(`/${id}/delete`)
+    deleteDog = (id) => this.api.post(`/${id}/delete`)
 }

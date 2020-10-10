@@ -13,4 +13,5 @@ export default class UsersService {
     getOneUser = id => this.api.get(`/getOneUser/${id}`)
     editUser = (id, user) => this.api.put(`/editUser/${id}`, user)
     deleteUser = (id) => this.api.get(`/${id}/delete`)
+    
 }

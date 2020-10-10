@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
 import Newdog from './newDog/NewDog'
 import ProDogDetails from './pro-dog-details'
 import ProDogCard from './pro-dog-card'
+
 class Profile extends Component {
 
     constructor(props) {
@@ -20,21 +21,25 @@ class Profile extends Component {
         this.state = {
             dogs: [],
             user: undefined,
-            showModal: false
+            showModal: false,
+            showList: false
         }
-            this.dogsService = new dogsService()
-        
+        this.dogsService = new dogsService()
+
     }
-        componentDidMount = () => this.loadDogs()
-    
-    
-        loadDogs() {
-            this.dogsService
-                .getDogs()
-                .then(response => this.setState({ dogs: response.data }))
-                .catch(error => console.log('Error!', error))
-            
-        }
+
+    componentDidMount = () => this.loadDogs()
+
+    handleModal = showModal => this.setState({ showModal })
+    loadDogs() {
+
+        this.dogsService
+            .getDogs()
+            .then(response => { this.setState({ dogs: response.data }) })
+            .catch(error => console.log('Error!', error))
+
+    }
+
     handleformUser() {
         if (this.props.loggedInUser) {
             if (this.props.loggedInUser.associationName)
@@ -44,6 +49,17 @@ class Profile extends Component {
         }
     }
     handleModal = showModal => this.setState({ showModal })
+    dogfilter() {
+        let aux = this.state.dogs.filter(elm => elm.owner === this.props.loggedInUser._id)
+        if (this.state.showList === true)
+            this.state.showList = false
+        else
+            this.state.showList = true
+            this.setState({ dogs: aux })
+           
+    }
+
+
     render() {
 
         return (
@@ -63,16 +79,21 @@ class Profile extends Component {
 
                         </Col>
                     </Row>
+
                     <Container fluid style={{ width: '85%', paddingLeft: '7%' }}>
 
                         <h2>Lista de perretes disponibles</h2>
-                        
+
                         <Button onClick={() => this.handleModal(true)} style={{ marginBottom: '20px' }} variant="dark" size="sm">Nuevo perro</Button>
+                        <Button onClick={() => { this.dogfilter() }} style={{ marginBottom: '20px' }} variant="dark" size="sm">Lista de perros</Button>
                         <Row className='justify-content-around'>
+                            {this.state.showList && <>
 
-                        {this.state.dogs.map(elm => <ProDogCard key={elm._id} {...elm} />)}
+                                {this.state.dogs.map(elm => <ProDogCard key={elm._id} {...elm} />)}
 
-                </Row>
+                            </>}
+
+                        </Row>
                         <Modal show={this.state.showModal} onHide={() => this.handleModal(false)}>
                             <Modal.Header closeButton>
                                 <Modal.Title >Añade un perro</Modal.Title>

@@ -26,6 +26,7 @@ class NewDog extends Component {
                 imageUrl: '',
                 owner: this.props.loggedInUser ? this.props.loggedInUser._id : ''
             },
+            
             uploadingImg: false
         }
 
@@ -33,6 +34,7 @@ class NewDog extends Component {
 
         this.fileService = new FileService()
     }
+   
 
     handleInputChange = e => {
 
@@ -47,7 +49,7 @@ class NewDog extends Component {
 
         this.dogService
             .newDog(this.state.dog)
-            .then(() => this.props.history.push('/profile'))
+            .then(() => this.props.closeModal())
             .catch(error => console.log('Error!', error))
     }
 
@@ -71,7 +73,7 @@ class NewDog extends Component {
     }
 
     render() {
-        console.log(this.state.dog)
+       
         return (
             
             <>
@@ -107,10 +109,10 @@ class NewDog extends Component {
 
                         <label>Descripción</label>
                     
-                        <input type='text' placeholder='Descripción'  onChange={this.handleInputChange}/> <br></br>
+                        <input type='text' name = "description" placeholder='Descripción'  onChange={this.handleInputChange}/> <br></br>
 
 
-                        <select select name = 'sex'  onChange = { this.handleInputChange } >
+                        <select select name = 'gender'  onChange = { this.handleInputChange } >
                         
                             <option value=''>Sexo</option>
 
@@ -126,7 +128,7 @@ class NewDog extends Component {
                         <input type="file" name="imageUrl"  onChange={this.handleImageUpload}/>
 
 
-                        <button type='submit'  disabled={this.state.uploadingImage}>{this.state.uploadingImage ? 'Añadiendo...' : 'Añadir perro'}</button>
+                        <button type='submit' closeModal={() => this.handleModal(false)}  disabled={this.state.uploadingImage}>{this.state.uploadingImage ? 'Añadiendo...' : 'Añadir perro'}</button>
 
 
                         </form>
