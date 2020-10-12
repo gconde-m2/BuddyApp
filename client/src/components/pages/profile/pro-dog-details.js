@@ -124,7 +124,7 @@ class ProDogDetails extends Component {
                                 <input type='text' placeholder={this.state.name} name='name' onChange={this.handleInputChange} /> <br></br>
 
 
-                                <label>Años</label>
+                                <label>AÃ±os</label>
 
                                 <input type='number' placeholder={this.state.age}  name='age' onChange={this.handleInputChange} /> <br></br>
 
@@ -134,7 +134,7 @@ class ProDogDetails extends Component {
                                 <input type='text' placeholder={this.state.race}  name='race' onChange={this.handleInputChange} /> <br></br>
 
 
-                                <label>Descripción</label>
+                                <label>DescripciÃ³n</label>
 
                                 <input type='text' name="description" placeholder={this.state.description}  onChange={this.handleInputChange} /> <br></br>
 

@@ -12,24 +12,26 @@ import Carousel from 'react-bootstrap/Carousel'
 
 import './Index.css'
 import buddy from './Buddy.png'
-import footprint from './footprint_animated.svg'
+import footprint from './footprint.svg'
+import animatedFootprint from './footprint_animated.svg'
 class Index extends Component {
 
     constructor() {
         super()
     }
 
-    componentDidMount() {
+    // componentDidMount() {
         
-        new Vivus('footprint', { duration: 200, file: footprint }, null)
-        console.log(footprint)
+    //     new Vivus('animatedFootprint', { duration: 200, file: animatedFootprint, animTimingFunction: Vivus.EASE }, null)
 
-    }
+    // }
 
     render() {
         return (
             <>
                 <Container className='section1'>
+                    
+                    <Fade clear>
                 
                     <Row>
                     
@@ -37,17 +39,27 @@ class Index extends Component {
                         
                             <Carousel className="carrous">
                             
-                                <Carousel.Item interval={500}>
+                                <Carousel.Item >
                                 
                                     <img
                                         className="d-block w-100 img-dog carousel-img"
-                                        src="https://www.hola.com/imagenes/estar-bien/20190820147813/razas-perros-pequenos-parecen-grandes/0-711-550/razas-perro-pequenos-grandes-m.jpg"
+                                        src = "https://scx2.b-cdn.net/gfx/news/hires/2020/dog.jpg"
                                         alt="First slide"
                                     />
 
                                 </Carousel.Item>
+                                    
+                                <Carousel.Item >
+                                
+                                    <img
+                                        className="d-block w-100 img-dog carousel-img"
+                                        src = "https://i.pinimg.com/originals/2f/fc/61/2ffc61b482dc43ed094272921e64ca22.jpg"
+                                        alt="Second slide"
+                                    />
 
-                                <Carousel.Item interval={500}>
+                                </Carousel.Item>
+
+                                <Carousel.Item >
                                 
                                     <img
                                         className="d-block w-100 img-dog"
@@ -57,25 +69,18 @@ class Index extends Component {
                                 
                                 </Carousel.Item>
 
-                                <Carousel.Item interval={500}>
-                                
-                                    <img
-                                        className="d-block w-100 img-dog"
-                                        src="https://static2.elcomercio.es/www/multimedia/201912/26/media/cortadas/perros-nombres-asturias-k9bD-U901062991415sSF-624x385@El%20Comercio.jpg"
-                                        alt="Third slide"
-                                    />
-
-                                </Carousel.Item>
-
                             </Carousel>
 
                         </Col>
+                        
 
                     </Row>
 
                     <p style={{ marginBottom: '60px', fontWeight: '200' }}>No todas las personas saben cómo amar a un perro, pero todos los perros saben cómo amar a una persona</p>
 
-                    <Link to={'/dogList'} style={{ textDecoration: 'none', color: 'black' }} className='button-adopta'>¡Adopta!</Link>
+                        <Link to={'/dogList'} style={{ textDecoration: 'none', color: 'black' }} className='button-adopta'>¡Adopta!</Link>
+                        
+                    </Fade>
 
                 </Container>
 
@@ -92,13 +97,12 @@ class Index extends Component {
                             </Col>
 
                             <Col md={2}>
-                                 <img
-                                    className=""
-                                    src="https://static8.depositphotos.com/1543657/1011/i/450/depositphotos_10110603-stock-photo-paw-print-on-white.jpg"
-                                    alt="Third slide"
-                                /> 
+                                
+                                {/* <svg id='footprint'></svg> */}
 
-                                <svg id='footprint'></svg>
+                                <img src={animatedFootprint} alt='Dog footprint' style={{height: '300px', width:'300px'}}/>
+           
+                                {/* <ReactVivus id='footprint' option={{animTimingFunction: 'EASE', type: 'oneByOne', file: footprint, onReady: console.log, }} style={{ height: '400px', width: '400px' }} callback={console.log}/> */}
 
                             </Col>
 
@@ -112,7 +116,7 @@ class Index extends Component {
                 
                     <Row className='justify-content-center'>
                     
-                        <Col md={7}>
+                        <Col md={7} style={{marginRight: '8%'}}>
 
                             <Fade left>
 

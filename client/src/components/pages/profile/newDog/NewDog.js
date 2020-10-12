@@ -9,7 +9,8 @@ import FileService from '../../../../service/files.service'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+
+import './NewDog.css'
 
 
 class NewDog extends Component {
@@ -26,7 +27,6 @@ class NewDog extends Component {
                 imageUrl: '',
                 owner: this.props.loggedInUser ? this.props.loggedInUser._id : ''
             },
-            
             uploadingImg: false
         }
 
@@ -34,7 +34,6 @@ class NewDog extends Component {
 
         this.fileService = new FileService()
     }
-   
 
     handleInputChange = e => {
 
@@ -49,7 +48,7 @@ class NewDog extends Component {
 
         this.dogService
             .newDog(this.state.dog)
-            .then(() => this.props.closeModal())
+            .then(() => this.props.history.push('/profile'))
             .catch(error => console.log('Error!', error))
     }
 
@@ -58,22 +57,22 @@ class NewDog extends Component {
 
         this.setState({ uploadingImg: true })
 
-         const uploadData = new FormData()
+        const uploadData = new FormData()
          
         uploadData.append('imageUrl', e.target.files[0])
 
-        this.filesService
+        this.fileService
             .uploadImage(uploadData)
             .then(response => this.setState({
                 dog: { ...this.state.dog, imageUrl: response.data.secure_url },
-                uploadingImage: null
+                uploadingImg: null
             }))
             .catch(error => console.log('Error!', error))
          
     }
 
     render() {
-       
+
         return (
             
             <>
@@ -84,32 +83,33 @@ class NewDog extends Component {
 
                     <Row>
 
-                        <h1>Añade un nuevo perrito a la lista de adopciones</h1>
+                        <h1 style={{textAlign: 'center', marginTop: 0}}>Añade un nuevo perrito a la lista de adopciones</h1>
                             
                     </Row>
 
-                    <Row>
+                    <Row className='formulary'>
 
                         <form onSubmit={this.handleFormSubmit}>
+                                
 
-                        <label>Nombre</label>
+                        <label >Nombre</label>
                     
                         <input type='text' placeholder='Nombre' name='name'  onChange={this.handleInputChange}/> <br></br>
 
 
-                        <label>Años</label>
+                        <label >Años</label>
                     
                         <input type='number' placeholder='Años' name='age'  onChange={this.handleInputChange}/> <br></br>
 
 
-                        <label>Raza</label>
+                        <label >Raza</label>
                     
                         <input type='text' placeholder='Raza' name='race'  onChange={this.handleInputChange}/> <br></br>
                     
 
-                        <label>Descripción</label>
+                        <label >Descripción</label>
                     
-                        <input type='text' name = "description" placeholder='Descripción'  onChange={this.handleInputChange}/> <br></br>
+                        <input type='text' name='description' placeholder='Descripción' value={this.state.dog.description} onChange={this.handleInputChange}/> <br></br>
 
 
                         <select select name = 'gender'  onChange = { this.handleInputChange } >
@@ -120,17 +120,20 @@ class NewDog extends Component {
 
                             <option value='Hembra'>Hembra</option>
 
-                        </select>
+                        </select> 
+                                
+                        <br></br>
+                                
 
+                        <label style={{paddingBottom: '15px'}}>Seleccionar imagen</label>
 
-                        <label>Seleccionar imagen</label>
+                        <input type="file" name="imageUrl"  onChange={this.handleImageUpload} />
+                                
+                         <br></br>
 
-                        <input type="file" name="imageUrl"  onChange={this.handleImageUpload}/>
+                        <button type='submit'  disabled={this.state.uploadingImg}>{this.state.uploadingImg ? 'Añadiendo...' : 'Añadir perro'}</button>
 
-
-                        <button type='submit' closeModal={() => this.handleModal(false)}  disabled={this.state.uploadingImage}>{this.state.uploadingImage ? 'Añadiendo...' : 'Añadir perro'}</button>
-
-
+                                
                         </form>
 
                     </Row>

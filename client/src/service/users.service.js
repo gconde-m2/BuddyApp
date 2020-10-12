@@ -5,7 +5,7 @@ export default class UsersService {
     constructor() {
         this.api = axios.create({
             baseURL: 'http://localhost:5000/api',
-             withCredentials: true
+            // withCredentials: true
         })
     }
 
@@ -13,5 +13,4 @@ export default class UsersService {
     getOneUser = id => this.api.get(`/getOneUser/${id}`)
     editUser = (id, user) => this.api.put(`/editUser/${id}`, user)
     deleteUser = (id) => this.api.get(`/${id}/delete`)
-    
 }

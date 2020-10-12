@@ -20,15 +20,13 @@ Final project for Web Development Bootcamp in Ironhack
 | /signup                             | POST   | 204 if successful                                |
 | /logout                             | GET    | Close session                                    |
 | /dogList                            | GET    | Render the list of all dogs                      |
-| /dogList/new                        | GET    | Render the adding dog form                       |
-| /dogList/new                        | POST   | 204 if successful                                |
 | /dogList/:dog\_id                   | GET    | Render the dog details view                      |
 | /map                                | GET    | Render the list of all associations              |
-| /estadistics                        | GET    | Render the data visualization page               |
+| /stadistics                         | GET    | Render the data visualization page               |
+| /donation                           | GET    | Render the ways of help                          |
+| /donation/donationForm              | GET    | Render the form for giving money                 |
 | /profile                            | GET    | Render the user's profile                        |
-| /profile/edit                       | PUT    | Edit user's profile                              |
-| /profile/favourites                 | GET    | Render the user's added\-to\-favourites dogs     |
-| /profile/favourites/:dog\_id/delete | DELETE | Remove a dog from the favourites list            |
+| /profile/edit                       | PUT    | Edit user's profile                              |  |
 | /profile/owned                      | GET    | Render the user's owned dog                      |
 | /profile/owned/new                  | GET    | Render the adding dog form                       |
 | /profile/owned/new                  | POST   | 204 if successful                                |

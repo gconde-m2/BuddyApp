@@ -1,46 +1,53 @@
-.buttons-sign{
-
+.buttons-sign {
 
     margin-top: 50px;
-    
-}
-.buttons-sign button{
-    background-color:#EF7B45;
-    border-color:#EF7B45 ;
 }
 
-.paco{
-padding-top: 0px;
-    margin-top: 0px;
-
+.buttons-sign button {
+    background-color: #EF7B45;
+    border-color: #EF7B45;
 }
-.block{
+
+.block {
     margin-top: 0px;
     margin-bottom: 300px;
 }
-.register-h1{
 
-    margin-top:100px;
+.register-h1 {
+
+    margin-top: 100px;
+    text-align: center;
 }
-.formu{
+
+.formu {
 
     text-align: center;
     padding-bottom: 50px;
+    font-size: 2em;
+    font-weight: 200;
 }
-.formu button{
-    background-color:#EF7B45;
-    border-color:#EF7B45 ;
+
+.logosign {
+    width: 50%;
+    margin-top: 120px;
+
 }
-.logosign{
+
+.firstBtn {
+    padding: 15px;
+    font-size: 1.8em;
+    font-weight: 300;
+    transition: 0.2s;
+}
+
+.firstBtn:hover {
+    opacity: 0.6;
+    background-color: #EF7B45;
+    border-color: #EF7B45;
+}
+
+.formu .firstBtn {
+    font-size: 1em;
+}
+
    
-  margin-left: auto;
-  margin-right: auto;
-  width: 10%;
-}
-.logosign img{
-    padding-bottom: 0;
-    margin-bottom: 0;
-    width:200px;
-    margin-top:120px;
-   
-}

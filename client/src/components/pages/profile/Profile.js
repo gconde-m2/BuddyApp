@@ -1,92 +1,105 @@
 import React, { Component } from 'react'
-import dogsService from '../../../service/dogs.service'
+
+import { Link } from 'react-router-dom'
+
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import authService from '../../../service/auth.service'
-import "./profile.css"
-import perfilLogo from './perfil.png'
 import Modal from 'react-bootstrap/Modal'
-import { Link } from 'react-router-dom'
+
+import dogsService from '../../../service/dogs.service'
+
+import './Profile.css'
+import perfilLogo from './perfil.png'
 import Newdog from './newDog/NewDog'
-import ProDogDetails from './pro-dog-details'
-import ProDogCard from './pro-dog-card'
+import ProDogCard from './Pro-dog-card'
 
 class Profile extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            dogs: [],
-            user: undefined,
-            showModal: false,
-            showList: false
-        }
-        this.dogsService = new dogsService()
+     constructor(props) {
+         super(props)
+         this.state = {
+             dogs: [],
+             user: undefined,
+             showModal: false,
+             showList: false
+         }
+         this.dogsService = new dogsService()
 
-    }
+     }
+     
+        componentDidMount = () => this.loadDogs()
+    
+        loadDogs() {
 
-    componentDidMount = () => this.loadDogs()
-
-    handleModal = showModal => this.setState({ showModal })
-    loadDogs() {
-
-        this.dogsService
+          this.dogsService
             .getDogs()
             .then(response => { this.setState({ dogs: response.data }) })
             .catch(error => console.log('Error!', error))
 
-    }
-
-    handleformUser() {
+        }
+        handleformUser() {
         if (this.props.loggedInUser) {
             if (this.props.loggedInUser.associationName)
                 return true
             else
                 return false
         }
-    }
-    handleModal = showModal => this.setState({ showModal })
-    dogfilter() {
-        let aux = this.state.dogs.filter(elm => elm.owner === this.props.loggedInUser._id)
-        if (this.state.showList === true)
-            this.state.showList = false
-        else
-            this.state.showList = true
-            this.setState({ dogs: aux })
+     }
+    
+        handleModal = showModal => this.setState({ showModal })
+        dogfilter() {
+            let aux = this.state.dogs.filter(elm => elm.owner === this.props.loggedInUser._id)
+            if (this.state.showList === true)
+                this.state.showList = false
+            else
+                this.state.showList = true
+                this.setState({ dogs: aux })
            
-    }
-
+        }
 
     render() {
 
         return (
-            <>
-                <h1 className="profile push">Perfil</h1>
+
+            <Container fluid style={{marginLeft: '5%'}} className='main'>
+
+                <h1 className="profile">Perfil</h1>
+
+
+
                 {this.handleformUser() == true && <Container fluid>
-                    <Row className="todo" >
-                        <Col classname="main-info col-6">
-                            <img className="logo-perfil" src={perfilLogo}></img>
-                            <h2 className="main-welcome">Bienvenido {this.props.loggedInUser.username}</h2>
-                            <h4 >Eres el administrador de "{this.props.loggedInUser.associationName}"</h4>
+                        
+                    <Row style={{ textAlign: 'left' }} >
+                        
+                        <Col>
+                                                            
+                            <img className="logo-perfil" src={this.props.loggedInUser.imageUrl} />
 
-                            <p>Te uniste el {this.props.loggedInUser.createdAt}</p>
-                            <p>Última actualizacion de tu perfil: {this.props.loggedInUser.updatedAt} </p>
-                        </Col>
-                        <Col classname=" col-6">
+                            <h2>¡Bienvenido {this.props.loggedInUser.username}!</h2>
 
+                            <p>Eres el administrador de {this.props.loggedInUser.associationName}</p>
+
+                            <p>Te uniste el {this.props.loggedInUser.createdAt.slice(0,10)}</p>
+
+                            <p>Última actualización de tu perfil: {this.props.loggedInUser.updatedAt.slice(0,10)} </p>
+                                
                         </Col>
+
                     </Row>
 
-                    <Container fluid style={{ width: '85%', paddingLeft: '7%' }}>
+                    <Row style={{ textAlign: 'left' }} className='justify-content-start'>
+                        
+                        <Col>
 
-                        <h2>Lista de perretes disponibles</h2>
+                        <h3>Lista de perros añadidos por ti</h3>
+                        
+                        <button onClick={() => this.handleModal(true)} className='listBtn'>Nuevo perro</button>
 
-                        <Button onClick={() => this.handleModal(true)} style={{ marginBottom: '20px' }} variant="dark" size="sm">Nuevo perro</Button>
-                        <Button onClick={() => { this.dogfilter() }} style={{ marginBottom: '20px' }} variant="dark" size="sm">Lista de perros</Button>
+                        <button onClick={() => { this.dogfilter() }} className='listBtn'>Lista de perros</button>
+                        
                         <Row className='justify-content-around'>
+                            
                             {this.state.showList && <>
 
                                 {this.state.dogs.map(elm => <ProDogCard key={elm._id} {...elm} />)}
@@ -94,44 +107,61 @@ class Profile extends Component {
                             </>}
 
                         </Row>
-                        <Modal show={this.state.showModal} onHide={() => this.handleModal(false)}>
-                            <Modal.Header closeButton>
-                                <Modal.Title >Añade un perro</Modal.Title>
-                            </Modal.Header>
+
+                        <Modal size='lg'  show={this.state.showModal} onHide={() => this.handleModal(false)}>
+                            
+                            <Modal.Header closeButton></Modal.Header>
+
                             <Modal.Body >
-                                <Newdog setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser} closeModal={() => this.handleModal(false)} />
+                                
+                                <Newdog setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser} {...this.props} closeModal={() => this.handleModal(false)} />
+
                             </Modal.Body>
-                        </Modal>
-                        <Row className='justify-content-around'>
 
-                        </Row>
-
-
-                    </Container>
-                </Container>}
-                {this.handleformUser() == false && <Container fluid>
-                    <Row className="todo" >
-                        <Col classname="main-info col-6">
-                            <img className="logo-perfil" src={perfilLogo}></img>
-                            <h2 className="main-welcome">Bienvenido {this.props.loggedInUser.username}</h2>
-                            <h4 >Eres el administrador de "{this.props.loggedInUser.associationName}"</h4>
-
-                            <p>Te uniste el {this.props.loggedInUser.createdAt}</p>
-                            <p>Última actualizacion de tu perfil: {this.props.loggedInUser.updatedAt} </p>
+                            </Modal>
+                            
                         </Col>
-                        <Col classname=" col-6">
-
-                        </Col>
+                                                    
                     </Row>
+
                 </Container>}
+
+              
+
+                {this.handleformUser() == false && <Container fluid>
+
+                    <Row style={{ textAlign: 'left' }}>
+                    
+                        <Col>
+                            
+                            <img className="logo-perfil" src={perfilLogo} />
+
+                            <h2>Bienvenido {this.props.loggedInUser.username}</h2>
+
+                            <p>Te uniste el {this.props.loggedInUser.createdAt.slice(0,10)}</p>
+
+                            <p>Última actualización de tu perfil: {this.props.loggedInUser.updatedAt.slice(0,10)} </p>
+
+                        </Col>
+
+                    </Row>
+                
+                </Container>}
+
+                
+
                 <Row>
+                    
                     <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }} className='button'>Volver</Link>
+                
                 </Row>
-            </>
+
+
+            </Container>
 
         )
-
     }
+    
 }
 
 export default Profile

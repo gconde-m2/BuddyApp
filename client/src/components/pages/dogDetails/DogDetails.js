@@ -4,10 +4,12 @@ import Fade from 'react-reveal/Fade'
 import { Link } from 'react-router-dom'
 
 import dogService from '../../../service/dogs.service'
+import NodemailerForm from './nodemailer/NodemailerForm'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Modal from 'react-bootstrap/Modal'
 
 import './DogDetails.css'
 import dcha from './dcha.png'
@@ -15,18 +17,25 @@ import izqda from './izqda.png'
 
 class DogDetails extends Component{
     
-    constructor() {
-        super()
-        this.state = {}
+    constructor(props) {
+        super(props)
+        this.state = {
+            showModal: false,
+            dog: ''
+        }
         this.dogService = new dogService()
     }
 
     componentDidMount = () => {
+
         this.dogService
             .getOneDog(this.props.match.params.dog_id)
-            .then(response => this.setState(response.data))
+            .then(response => this.setState({ dog: response.data }))
             .catch(error => console.log('Error!', error))
     }
+
+    handleModal = showModal => this.setState({ showModal })
+
     
 
     render() {
@@ -37,7 +46,7 @@ class DogDetails extends Component{
                     
                 <Fade clear duration={2000}>
 
-                    <h1 style={{ marginLeft: '5%' }}>{this.state.name}</h1>
+                    <h1 style={{ marginLeft: '5%' }}>{this.state.dog.name}</h1>
                     
                 </Fade>
 
@@ -47,7 +56,7 @@ class DogDetails extends Component{
                         
                         <Fade clear duration={2000}>
                         
-                            <img className='dogPhoto' src={this.state.imageUrl} alt='Doggy image' />
+                            <img className='dogPhoto' src={this.state.dog.imageUrl} alt='Doggy image' />
                             
                         </Fade>
 
@@ -59,19 +68,31 @@ class DogDetails extends Component{
 
                         <article >
 
-                            <p>Edad: {this.state.age} </p>
+                            <p>Edad: {this.state.dog.age} </p>
 
-                            <p>Sexo: {this.state.gender}</p>
+                            <p>Sexo: {this.state.dog.gender}</p>
 
-                            <p>Raza: {this.state.race}</p>
+                            <p>Raza: {this.state.dog.race}</p>
 
-                            <p style={{marginBottom: '40px', width: '60%'}}>Cómo soy: {this.state.description}</p>
+                            <p style={{marginBottom: '40px', width: '60%'}}>Cómo soy: {this.state.dog.description}</p>
 
-                            <Link to={`/dogList/${this.state.id}/adopt`} style={{ textDecoration: 'none', color: 'black' }} className='details-link'>¡Adóptame!</Link>
+                            <button  onClick={() => this.handleModal(true)} className='details-link'>¡Adóptame!</button>
                             
                             </article>
                             
                         </Fade>
+
+                         <Modal size='lg'  show={this.state.showModal} onHide={() => this.handleModal(false)}>
+                            
+                            <Modal.Header closeButton></Modal.Header>
+
+                            <Modal.Body >
+                                
+                                <NodemailerForm setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser} {...this.props} closeModal={() => this.handleModal(false)} />
+
+                            </Modal.Body>
+
+                            </Modal>
 
                     </Col>
 

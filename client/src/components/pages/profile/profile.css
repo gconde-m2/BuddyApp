@@ -1,29 +1,42 @@
-.push{
-    margin-top: 200px;
-
-
-
+.profile {
+    font-weight: 200;
+    margin-top: 250px;
 }
-.profile{
-    font-weight: 800;
-    margin-left: 15%;
-}
-.main-info{
 
-   text-align: left;
-   
+.logo-perfil {
 
+    margin-bottom: 70px;
+    height: 400px;
+    width: 300px;
+    object-fit: cover;
 }
-.main-welcome{
 
-    font-size: 50px;
+.main h2 {
+    font-size: 2.8em;
+    font-weight: 300;
+    padding: 25px 0;
 }
-.logo-perfil{
 
-    padding-bottom: 50px;
-    width:100px;
+.main p {
+    font-size: 2em;
+    font-weight: 200;
 }
-.todo{
-    
+
+.main h3 {
+    padding-top: 40px;
     text-align: left;
+}
+
+.listBtn {
+    margin-right: 30px;
+    padding: 25px;
+    font-size: 1.6em;
+    font-weight: 200;
+    background-color: #A4D6E0;
+    border: #A4D6E0;
+    transition: 0.2s;
+}
+
+.listBtn:hover {
+    opacity: 0.8;
 }

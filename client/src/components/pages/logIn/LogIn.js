@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import './login.css'
+import './LogIn.css'
 import logo from '../../layout/navbar/logoTitulo.png'
 import authService from '../../../service/auth.service'
 
@@ -30,6 +30,7 @@ class Login extends Component {
         e.preventDefault()
 
         if (this.state.username.length > 0 && this.state.password.length > 0) {
+
             this.authService
                 .login(this.state)
                 .then(response => {
@@ -64,7 +65,8 @@ class Login extends Component {
         return (
 
             <Container>
-                <main>
+                
+                <main style={{paddingTop: '150px'}}>
 
                     <img className="logo" src={logo}></img>
 
@@ -77,17 +79,23 @@ class Login extends Component {
                             <Form className="formu" onSubmit={this.handleFormSubmit}>
 
                                 <Form.Group>
+                                    
                                     <Form.Label>Nombre de usuario</Form.Label>
                                     <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
+                                
                                 </Form.Group>
 
                                 <Form.Group>
+                                   
                                     <Form.Label>Contraseña</Form.Label>
                                     <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
+                                
                                 </Form.Group>
 
                                 <div className=" justify-content-center">
+                                   
                                     <Button variant="dark" type="submit">Acceder</Button>
+                                
                                 </div>
 
                             </Form>

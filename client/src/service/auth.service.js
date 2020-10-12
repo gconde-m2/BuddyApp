@@ -6,7 +6,7 @@ export default class AuthService {
         this.api = axios.create({
             baseURL: 'http://localhost:5000/api',
             withCredentials: true
-            
+
         })
     }
 

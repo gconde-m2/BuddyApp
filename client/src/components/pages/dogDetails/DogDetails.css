@@ -6,9 +6,11 @@ article {
 
 .details-link {
     background-color: #A4D6E0;
-    padding: 25px;
+    padding: 20px 25px;
     transition: 0.3s;
     font-size: 0.9em;
+    border-color: white;
+    font-weight: 200;
 }
 
 .details-link:hover {

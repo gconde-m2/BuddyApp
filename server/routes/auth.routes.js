@@ -2,22 +2,20 @@ const express = require("express")
 const router = express.Router()
 const passport = require("passport")
 const bcrypt = require("bcrypt")
+const transporter = require('../configs/nodemailer.config')
 
 const User = require("../models/user.model")
 
 
 router.post('/signup', (req, res, next) => {
 
-    const username = req.body.username;
-    const password = req.body.password;
-    const email = req.body.email
-    const cif = req.body.cif
-    const associationName = req.body.associationName
-    const image = req.body.image
-  
-    
-    console.log(username)
-    console.log(associationName)
+     const username = req.body.username;
+     const password = req.body.password;
+     const email = req.body.email
+     const cif = req.body.cif
+     const associationName = req.body.associationName
+     const imageUrl = req.body.imageUrl
+
     if (!username || !password) {
         res.status(400).json({
             message: 'Empty fields'
@@ -52,27 +50,25 @@ router.post('/signup', (req, res, next) => {
 
         const salt = bcrypt.genSaltSync(10);
         const hashPass = bcrypt.hashSync(password, salt);
-        let anewUser = new User
-        if(req.body.cif)
-        {
-            console.log("estoy entrandoooooo")
+        if (req.body.cif) {
             aNewUser = new User({ //
                 username: username,
                 password: hashPass,
                 cif: cif,
-                email:email,
-                associationName:associationName,
-                
+                email: email,
+                associationName: associationName,
+                imageUrl: imageUrl
+
             });
-        }else{
+        } else {
             aNewUser = new User({ //
                 username: username,
                 password: hashPass,
-                email:email,
-               
+                email: email,
+
             });
         }
-            
+
         aNewUser.save(err => {
             if (err) {
                 res.status(500).json({
@@ -81,6 +77,7 @@ router.post('/signup', (req, res, next) => {
                 return;
             }
 
+            
             req.login(aNewUser, (err) => {
 
                 if (err) {
@@ -90,7 +87,7 @@ router.post('/signup', (req, res, next) => {
                     return;
                 }
 
-    
+                
                 res.status(200).json(aNewUser);
             });
         });
@@ -108,10 +105,12 @@ router.post('/login', (req, res, next) => {
         }
 
         if (!theUser) {
+           
             res.status(401).json(failureDetails);
             return;
         }
 
+     
         req.login(theUser, (err) => {
             if (err) {
                 res.status(500).json({
@@ -120,7 +119,6 @@ router.post('/login', (req, res, next) => {
                 return;
             }
 
-         
             res.status(200).json(theUser);
         });
     })(req, res, next);
@@ -129,7 +127,6 @@ router.post('/login', (req, res, next) => {
 
 
 router.post('/logout', (req, res, next) => {
- 
     req.logout();
     res.status(200).json({
         message: 'Log out success!'
@@ -146,6 +143,38 @@ router.get('/loggedin', (req, res, next) => {
         message: 'Unauthorized'
     });
 });
+
+router.post('/sendEmail', (req, res) => {
+
+    let {
+        emailUser,
+        emailOwner,
+        subject,
+        message
+    } = req.body
+
+    let mail = {
+        from: emailUser,
+        to: emailOwner,
+        subject: subject,
+        text: message,
+        html: `<b>${message}</b>`
+    }
+
+    transporter.sendMail(mail, (err, data) => {
+        if (err) {
+            
+            res.status(500).send({ status: 'FAIL', msg: 'Internal error: email not sent' })
+
+        } else {
+            
+            res.status(200).json({ status: 'OK', msg: 'Email sent' })
+        }
+    })
+
+
+})
+
 
 
 module.exports = router

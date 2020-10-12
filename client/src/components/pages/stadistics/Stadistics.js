@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2'
+import Fade from 'react-reveal/Fade'
+
 import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+
 import destiny from '../../../data/destiny'
 import evolution from '../../../data/evolution'
 import main from '../../../data/main'
 import tax from '../../../data/tax'
 
-import './stadistics.css'
-
 const state = {
   labels: [],
+
   datasets: [
     {
       label: 'nº de perros',
@@ -53,13 +54,13 @@ const state2 = {
 }
 const state3 = {
   labels: [],
+
   datasets: [
     {
       label: 'destino',
+
       backgroundColor:
         'rgba(239, 123, 69, 0.6)',
-
-
 
       hoverBackgroundColor:
         '#501800',
@@ -71,13 +72,13 @@ const state3 = {
 
 const state4 = {
   labels: [],
+
   datasets: [
     {
       label: 'destino',
+
       backgroundColor:
         'rgba(239, 123, 69, 0.6)',
-
-
 
       hoverBackgroundColor:
         '#501800',
@@ -110,8 +111,18 @@ class Stadistics extends Component {
 
     return (
 
-      <Container className="pushdown">
-        <Row >
+      <Container style={{ padding: '0 18% 10%' }} fluid>
+        
+        <Fade left duration={1500}>
+
+        <Row>
+
+          <h1>Estadísticas</h1>
+
+        </Row>
+        
+        <Row style={{paddingTop: '80px'}}>
+          
           <Col md={{ span: 6 }}>
             
               <Line
@@ -121,7 +132,7 @@ class Stadistics extends Component {
                   title: {
                     display: true,
                     text: 'Evolución del número de perros recogidos por refugios y protectoras en España',
-                    fontSize: 20
+                    fontSize: 25
                   },
                   legend: {
                     display: false,
@@ -132,34 +143,43 @@ class Stadistics extends Component {
             
           </Col>
 
-            <Col md={{ span: 6 }}>
+          <Col md={{ span: 6 }}>
             
             <Doughnut
+              
               data={state2}
+
               options={{
                 title: {
                   display: true,
                   text: 'Destino de los perros',
-                  fontSize: 20
+                  fontSize: 30
                 },
+
                 legend: {
                   display: true,
                   position: 'right'
                 }
               }}
-              />
+            />
+            
           </Col>
 
-              </Row>
-              <Row>
+        </Row>
+
+        <Row style={{paddingTop: '200px'}}>
+          
           <Col>
+            
             <Bar
+              
               data={state4}
+
               options={{
                 title: {
                   display: true,
-                  text: "tax de animales recuperados que llegan a refugios en España",
-                  fontSize: 20
+                  text: "Tasa de animales recuperados que llegan a refugios en España",
+                  fontSize: 30
                 },
   
                 legend: {
@@ -168,24 +188,32 @@ class Stadistics extends Component {
                 }
               }}
             />
+
+            <div style={{paddingBottom: '150px'}}></div>
     
             <Bar
+              
               data={state3}
               options={{
                 title: {
                   display: true,
-                  text: "main motivos para el abandono de animales de compañía en 2018 en España",
-                  fontSize: 20
+                  text: "Principales motivos para el abandono de animales de compañía en 2018 en España",
+                  fontSize: 30
                 },
                 legend: {
                   display: false,
                   position: 'right'
                 }
               }}
-            />
-          </Col>
-        </Row>
 
+              
+            />
+
+          </Col>
+
+        </Row>
+          
+        </Fade>
 
       </Container>
     )

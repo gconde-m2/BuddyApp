@@ -25,14 +25,14 @@ class DonationForm extends Component {
 
     componentDidMount = () => this.loadUsers()
 
-    // loadUsers() {
+    loadUsers() {
         
-    //     this.UserService
-    //         .getUsers()
-    //         .then(response => this.setState({ users: response.data }))
-    //         .catch(error => console.log('Error!', error))
+        this.UserService
+            .getUsers()
+            .then(response => this.setState({ users: response.data }))
+            .catch(error => console.log('Error!', error))
     
-    // }
+    }
 
 
     render() {

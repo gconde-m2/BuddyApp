@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import Button from 'react-bootstrap/Button'
 import logoTitulo from './logoTitulo.png'
 
 import './Navbar.css'
@@ -35,7 +34,9 @@ export default class extends Component {
     render() {
         //console.log(this.props)
         return (
+
             <>
+                
             <Navbar className='navbar'>
                 
               <Link to='/'> <img alt="Logotipo" src={logoTitulo} className='logoNav'/> </Link>
@@ -52,16 +53,26 @@ export default class extends Component {
                     {this.props.loggedInUser && <div className="navlink" onClick={this.logoutUser}>Cerrar sesión</div>}
   
                 </Nav>
+                    
             </Navbar>
-                    <Modal  show={this.state.showModal} onHide={() => this.handleModal(false)}>
-                    <Modal.Header closeButton>
-                        <Modal.Title >Login</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body >
-                        <Login setTheUser={this.props.setTheUser}  loggedInUser={this.props.loggedInUser} closeModal={() => this.handleModal(false)}  />
-                    </Modal.Body>
-                </Modal>
-                    </>
+                
+            <Modal show={this.state.showModal} onHide={() => this.handleModal(false)}>
+                    
+                <Modal.Header closeButton>
+                        
+                    <Modal.Title >Login</Modal.Title>
+
+                </Modal.Header>
+
+                <Modal.Body >
+                        
+                    <Login setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser} closeModal={() => this.handleModal(false)} />
+                        
+                </Modal.Body>
+
+            </Modal>
+                
+            </>
                    
         )
     }
