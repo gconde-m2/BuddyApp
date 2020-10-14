@@ -30,3 +30,8 @@
       padding-bottom: 0;
       margin-bottom: 0;
   }
+
+  .alert{
+    color:red;
+    text-align: center;
+  }

@@ -19,7 +19,8 @@ const userSchema = new Schema({
     },
 
     associationName: {
-        type: String
+        type: String,
+        
     },
 
     cif: {

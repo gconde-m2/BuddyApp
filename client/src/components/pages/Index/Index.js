@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Fade from 'react-reveal/Fade'
 import { Link } from 'react-router-dom'
-
+import MyComponent from './Vivus'
 import Vivus from 'vivus'
 import ReactVivus from 'react-vivus'
 
@@ -20,11 +20,11 @@ class Index extends Component {
         super()
     }
 
-    // componentDidMount() {
+     componentDidMount() {
         
-    //     new Vivus('animatedFootprint', { duration: 200, file: animatedFootprint, animTimingFunction: Vivus.EASE }, null)
+        
 
-    // }
+     }
 
     render() {
         return (
@@ -98,12 +98,16 @@ class Index extends Component {
 
                             <Col md={2}>
                                 
-                                {/* <svg id='footprint'></svg> */}
-
-                                <img src={animatedFootprint} alt='Dog footprint' style={{height: '300px', width:'300px'}}/>
+                           
+                   
+               
+                                  
+                              
+                                
+                                <MyComponent/>
+                              
            
-                                {/* <ReactVivus id='footprint' option={{animTimingFunction: 'EASE', type: 'oneByOne', file: footprint, onReady: console.log, }} style={{ height: '400px', width: '400px' }} callback={console.log}/> */}
-
+                               
                             </Col>
 
                         </Row>

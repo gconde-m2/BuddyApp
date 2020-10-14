@@ -66,7 +66,7 @@ export default class extends Component {
 
                 <Modal.Body >
                         
-                    <Login setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser} closeModal={() => this.handleModal(false)} />
+                    <Login show={this.state.showModal} setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser} closeModal={() => this.handleModal(false)} />
                         
                 </Modal.Body>
 

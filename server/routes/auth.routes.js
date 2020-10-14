@@ -16,7 +16,7 @@ router.post('/signup', (req, res, next) => {
      const associationName = req.body.associationName
      const imageUrl = req.body.imageUrl
 
-    if (!username || !password) {
+    if (!username || !password || !email) {
         res.status(400).json({
             message: 'Empty fields'
         });
@@ -29,25 +29,43 @@ router.post('/signup', (req, res, next) => {
         });
         return;
     }
-
-    User.findOne({
-        username
-    }, (err, foundUser) => {
-
+   
+   
+    
+ 
+//    User.findOne({associationName})
+//     .then((elm)=>{
+//         console.log(elm)
+//         if (elm) {
+//             console.log("jaja")
+//             paco = 1
+//             res.status(405).json({
+//                 message: 'assoc taken'
+                
+//             });
+//             return 
+//         }
+//     })
+    
+    console.log(paco)
+    if (paco == 1)
+        return
+        User.findOne({username}, (err, foundUser) => {
+            
         if (err) {
             res.status(500).json({
                 message: "Username check error"
             });
             return;
         }
-
+  
         if (foundUser) {
             res.status(400).json({
                 message: 'Username taken'
             });
             return;
         }
-
+       
         const salt = bcrypt.genSaltSync(10);
         const hashPass = bcrypt.hashSync(password, salt);
         if (req.body.cif) {

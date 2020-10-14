@@ -27,17 +27,13 @@ class SignUp extends Component {
             showUserForm: false,
             showAsocForm: false
             },
+        message: undefined,
+        uploadingImg: false,
 
-            uploadingImg: false,
-
-            }
-             
+        }  
         this.authService = new AuthService()
-            
         this.fileService = new FileService()
-    
-        
-        }
+    }
        
 
     handleInputChange = e => {
@@ -49,26 +45,29 @@ class SignUp extends Component {
 
         e.preventDefault()
 
-        console.log(this.state.user)
-
         this.authService
             .signup(this.state.user)
             .then(response => {
+                
                 this.props.setTheUser(response.data)
                 this.props.history.push('/')
             })
-            .catch(err => console.log('Error:', { err }))
+            .catch(err => {
+              
+                this.setState({  message: err.response.data.message })
+                
+                console.log('Error:',  err )})
     }
 
     handleFormUser = e => {
-        if (this.state.user.showAsocForm == false) {
-            this.state.user.showUserForm == false ? e = true : e = false
+        if (this.state.user.showAsocForm === false) {
+            this.state.user.showUserForm === false ? e = true : e = false
             this.setState({ user: { ...this.state.user, showUserForm: e } })
         }
     }
     handleFormAsoc = e => {
-        if (this.state.user.showUserForm == false) {
-            this.state.user.showAsocForm == false ? e = true : e = false
+        if (this.state.user.showUserForm === false) {
+            this.state.user.showAsocForm === false ? e = true : e = false
             this.setState({ user: { ...this.state.user, showAsocForm: e }})
         }
     }
@@ -115,8 +114,8 @@ class SignUp extends Component {
                             
                         <Button onClick={() => this.handleFormAsoc(true)} className='firstBtn'>Crear cuenta como asociación</Button>
                         
-                    </Col>
                     
+                    </Col>
                 </Row>
                 
             </Container>
@@ -153,7 +152,7 @@ class SignUp extends Component {
                                         <Button variant="dark" type="submit" className="firstBtn">Registrarme</Button>
                                     
                                     </div>
-
+                                    <p className="alert">{this.state.message}</p>
                                 </Form>
                             
                             </Col>
@@ -211,7 +210,7 @@ class SignUp extends Component {
                                         <Button variant="dark" type="submit" className="firstBtn">Registrarme</Button>
                                     
                                     </div>
-                                
+                                    <p className="alert">{this.state.message}</p>
                                 </Form>
                             
                             </Col>

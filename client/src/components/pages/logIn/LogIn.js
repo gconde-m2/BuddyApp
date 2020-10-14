@@ -34,27 +34,31 @@ class Login extends Component {
             this.authService
                 .login(this.state)
                 .then(response => {
-
-                    this.setState({ message: response })
+                     
                     this.props.setTheUser(response.data)
-
                     //this.props.history.push('/')
                     this.props.closeModal()
                 })
-                .catch(err => console.log('Erroooooor:', { err }))
+                .catch(err => {
+                console.log('Error:', { err }) 
+                this.setState({ message:'Contraseña o usuario incorrecto'})})
         }
         else {
+            console.log(this.props.show)
             if (this.state.username.length < 1 && this.state.password.length < 1) {
                 let value = 'campos vacios'
                 this.setState({ message: value })
             }
             else if (this.state.username.length < 1) {
-                let value = 'introduce el username'
+                let value = 'Introduce el usuario'
                 this.setState({ message: value })
 
-            } else {
-                let value = 'introduce la contraseña'
+            } 
+            else if (this.state.password.length < 1){
+                let value = 'Introduce la contraseña'
                 this.setState({ message: value })
+            }else{
+                this.setState({ message: undefined})
             }
         }
     }
@@ -97,12 +101,15 @@ class Login extends Component {
                                     <Button variant="dark" type="submit">Acceder</Button>
                                 
                                 </div>
-
                             </Form>
-
+                                <p className="alert">{this.props.show === true && this.state.message}</p>
+                            
                         </Col>
 
                     </Row>
+     
+                                
+                             
 
                 </main>
 
