@@ -17,3 +17,21 @@
 .donate img:hover {
     opacity: 0.6;
 }
+
+@media (max-width: 900px) {
+
+    .donate img {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .donation-form {
+        font-size: 1.2em;
+    }
+
+    .donation-form label, select {
+        font-size: 1.2em;
+    }
+
+
+}

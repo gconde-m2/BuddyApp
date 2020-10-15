@@ -1,0 +1,11 @@
+.toast {
+    position: fixed;
+    top: 15%;
+    left: 45%;
+    height: 25%;
+    width: 30%;
+    font-size: 1.5em;
+    font-weight: 200;
+    z-index: 1;
+    padding: 20px;
+}

@@ -1,7 +1,7 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    
+    
+   
     background-color: #EF7B45;
     top: 0;
     width: 100%;
@@ -30,4 +30,14 @@
 .logoNav:hover {
     transform: scale(1.1);
 }
+.right-menu{
 
+    justify-content: flex-end
+}
+
+
+
+@media (max-width: 900px) {
+ 
+    
+}

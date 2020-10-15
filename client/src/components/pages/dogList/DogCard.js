@@ -18,13 +18,13 @@ const DogCard = ({ _id, name, imageUrl }) => {
             
             <Row className='justify-content-start'>
 
-                <Col md={8}>
+                <Col sm={9} md={8} >
                     
                     <div className="dogCard-div">
 
                     <h3>{name}</h3>
                     
-                    <Link  to={`/dogList/${_id}`} className='link' style={{textDecoration: 'none', color: 'black', fontSize: '2em'}}>Ver detalles</Link>
+                    <Link  to={`/dogList/${_id}`} className='link' style={{textDecoration: 'none', color: 'black'}}>Ver detalles</Link>
 
                     </div>
                     

@@ -34,31 +34,27 @@ class Login extends Component {
             this.authService
                 .login(this.state)
                 .then(response => {
-                     
+
+                    this.setState({ message: response })
                     this.props.setTheUser(response.data)
+
                     //this.props.history.push('/')
                     this.props.closeModal()
                 })
-                .catch(err => {
-                console.log('Error:', { err }) 
-                this.setState({ message:'Contraseña o usuario incorrecto'})})
+                .catch(err => console.log('Erroooooor:', { err }))
         }
         else {
-            console.log(this.props.show)
             if (this.state.username.length < 1 && this.state.password.length < 1) {
                 let value = 'campos vacios'
                 this.setState({ message: value })
             }
             else if (this.state.username.length < 1) {
-                let value = 'Introduce el usuario'
+                let value = 'introduce el username'
                 this.setState({ message: value })
 
-            } 
-            else if (this.state.password.length < 1){
-                let value = 'Introduce la contraseña'
+            } else {
+                let value = 'introduce la contraseña'
                 this.setState({ message: value })
-            }else{
-                this.setState({ message: undefined})
             }
         }
     }
@@ -70,21 +66,21 @@ class Login extends Component {
 
             <Container>
                 
-                <main style={{paddingTop: '150px'}}>
+                <main >
 
-                    <img className="logo" src={logo}></img>
+                    <img alt="logo" className="logo" src={logo}></img>
 
                     <Row className="justify-content-center">
 
                         <Col md={{ span: 5 }}>
 
-                            <h1 className="ptitle">Login</h1>
+                         
                             
                             <Form className="formu" onSubmit={this.handleFormSubmit}>
 
                                 <Form.Group>
                                     
-                                    <Form.Label>Nombre de usuario</Form.Label>
+                                    <Form.Label>Usuario</Form.Label>
                                     <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
                                 
                                 </Form.Group>
@@ -101,15 +97,12 @@ class Login extends Component {
                                     <Button variant="dark" type="submit">Acceder</Button>
                                 
                                 </div>
+
                             </Form>
-                                <p className="alert">{this.props.show === true && this.state.message}</p>
-                            
+
                         </Col>
 
                     </Row>
-     
-                                
-                             
 
                 </main>
 

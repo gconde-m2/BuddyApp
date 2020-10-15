@@ -19,14 +19,15 @@ const userSchema = new Schema({
     },
 
     associationName: {
-        type: String,
-        
+        type: String, 
+    
     },
 
     cif: {
         type: String,
         maxlength: 9,
-        minlength: 9
+        minlength: 9,
+        match: /^[A-Z]\d{8}$/
     },
 
     imageUrl: {
@@ -37,7 +38,8 @@ const userSchema = new Schema({
         type: String,
         required: true,
         default: 'Email-needed',
-        trim: true
+        trim: true,
+        match: /^\S+@\S+\.\S+$/
     }
 
 },  {

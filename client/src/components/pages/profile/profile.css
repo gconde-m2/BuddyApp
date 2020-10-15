@@ -5,9 +5,9 @@
 
 .logo-perfil {
 
-    margin-bottom: 70px;
+    margin: 70px 0;
     height: 400px;
-    width: 300px;
+    width: 400px;
     object-fit: cover;
 }
 
@@ -39,4 +39,24 @@
 
 .listBtn:hover {
     opacity: 0.8;
+}
+
+
+@media (max-width: 900px) {
+    .logo-perfil {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .listBtn {
+        font-size: 1.2em;
+        margin-bottom: 25px;
+    }
+    .profile{
+        font-size: 50px;
+        margin-top: 30px
+    }
+
+    
 }

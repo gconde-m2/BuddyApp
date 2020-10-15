@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-
 import Index from './pages/Index/Index'
 import Navigation from './layout/navbar/Navbar'
 import Footer from './layout/footer/Footer'
@@ -16,8 +15,6 @@ import Profile from './pages/profile/Profile'
 import ProDogDetails from './pages/profile/Pro-dog-details'
 
 import authService from './../service/auth.service'
-
-
 
 
 class App extends Component {
@@ -60,7 +57,7 @@ class App extends Component {
           <Route path="/donation/donationForm" render={() => <DonationForm />} />
           <Route path="/map" render={() => <Maps />} />
           <Route path="/profile" exact render={() => <Profile loggedInUser={this.state.loggedInUser} />} /> 
-          <Route path="/profile/profile-dogList/:dog_id"  render = {props => <ProDogDetails loggedInUser={this.state.loggedInUser } {...props}/>} />
+          <Route path="/profile/profile-dogList/:dog_id"  render = {props => this.state.loggedInUser ? <ProDogDetails loggedInUser={this.state.loggedInUser } {...props} /> : <Redirect to="/login" />} />
           <Route path="/signup"  exact render={props => <SignUp setTheUser={this.setTheUser} {...props}/>}></Route>
           <Route path="/login"  render={props => <LogIn setTheUser={this.setTheUser} {...props} />} />
           <Route path="/stadistics"  render= {() => <Stadistics/>} />

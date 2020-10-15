@@ -4,6 +4,7 @@ article {
     line-height: 70px;
 }
 
+
 .details-link {
     background-color: #A4D6E0;
     padding: 20px 25px;
@@ -17,12 +18,6 @@ article {
     opacity: 0.8;
 }
 
-/* #footprints {
-    width: 40%;
-    position: fixed;
-    right: 5%;
-    top: 20%;
-} */
 
 #footprint1 {
 
@@ -60,4 +55,43 @@ article {
     right: 10%;
  }
 
+ @media (max-width: 900px) {
+
+
+    article {
+        font-size: 1.2em;
+        line-height: 40px;
+        margin-top: 50px;
+        margin-left: 20px;
+    }
+
+    .details-link {
+        padding: 10px;
+    }
+
+    .button {
+        padding: 15px;
+        font-size: 0.8em;
+    }
+
+    #footprint1 {
+        top: 25%;
+        z-index: -1;
+    }
+
+    #footprint2 {
+        z-index: -1;
+        right: 0%;
+    }
+
+    #footprint3 {
+        z-index: -1;
+        right: 15%;
+    }
+
+    #footprint4 {
+        z-index: -1;
+        right: 0%;
+    }
+ }
 

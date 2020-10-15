@@ -58,9 +58,6 @@
 .last-section {
     margin-top: 40px;
     text-align: center;
-}
-
-.last-section {
     font-size: 80px;
     align-items: center;
 }
@@ -79,14 +76,46 @@
     margin-bottom: 3%;
 }
 
-/* .section2 svg {
-    width: 150px;
+.section2 {
+    opacity: 0;
+    transition: .2s;
+    background-color: #A4D6E0;
 
 }
 
-.section2 svg * {
-    opacity: .8;
-    stroke-width: 1;
-    stroke: white;
-    fill: transparent;
-} */
+.section2.on {
+    opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+
+    .section1 {
+        margin-top: 45%;
+    }
+   
+
+    .img-dog {
+        max-height: 200px;
+        max-width: 100%;
+    }
+    
+    .background {
+        max-width: 100%;
+       margin-bottom: 20%;
+
+    }
+
+   .section1 p {
+       font-size: 0.8em;
+   }
+
+   .section2 p {
+       font-size: 0.8em;
+       padding-left: 20%;
+   }
+
+   .button-adopta {
+       font-size: 0.7em;
+   }
+   
+}

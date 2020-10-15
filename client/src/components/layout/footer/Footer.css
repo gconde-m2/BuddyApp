@@ -12,3 +12,12 @@ footer {
 footer p {
     padding-top: 1%;
 }
+
+
+@media (max-width: 900px) {
+    footer {
+        max-width: 100%;
+        text-align: center;
+        height: 40px;
+    }
+}

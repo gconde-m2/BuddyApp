@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import { Link } from 'react-router-dom'
 
+import Fade from 'react-reveal/Fade'
+
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -22,7 +24,8 @@ class Profile extends Component {
              dogs: [],
              user: undefined,
              showModal: false,
-             showList: false
+             showList: false,
+             
          }
          this.dogsService = new dogsService()
 
@@ -47,34 +50,42 @@ class Profile extends Component {
         }
      }
     
-        handleModal = showModal => this.setState({ showModal })
+    handleModal = showModal => this.setState({ showModal })
+    
+
         dogfilter() {
             let aux = this.state.dogs.filter(elm => elm.owner === this.props.loggedInUser._id)
-            if (this.state.showList === true)
+            if (this.state.showList === true) {
                 this.state.showList = false
-            else
+                document.getElementById('paragraph').setAttribute('style', 'display: block',)
+            } else {
                 this.state.showList = true
                 this.setState({ dogs: aux })
-           
+                document.getElementById('paragraph').setAttribute('style', 'display: none', )
+
+                
+            }
         }
+
 
     render() {
 
         return (
 
-            <Container fluid style={{marginLeft: '5%'}} className='main'>
+            <Fade clear delay={600}>
+
+            <Container fluid style={{paddingLeft: '5%'}} className='main'>
 
                 <h1 className="profile">Perfil</h1>
 
-
-
-                {this.handleformUser() == true && <Container fluid>
+                
+                {this.handleformUser() === true && <Container fluid>
                         
                     <Row style={{ textAlign: 'left' }} >
                         
                         <Col>
                                                             
-                            <img className="logo-perfil" src={this.props.loggedInUser.imageUrl} />
+                            { this.props.loggedInUser.imageUrl  && <img alt="profile" className="logo-perfil" src={this.props.loggedInUser.imageUrl}/>} 
 
                             <h2>¡Bienvenido {this.props.loggedInUser.username}!</h2>
 
@@ -96,10 +107,12 @@ class Profile extends Component {
                         
                         <button onClick={() => this.handleModal(true)} className='listBtn'>Nuevo perro</button>
 
-                        <button onClick={() => { this.dogfilter() }} className='listBtn'>Lista de perros</button>
+                        <button onClick={() => { this.dogfilter() }}  className='listBtn'>Lista de perros</button>
+                            
+                        <p id='paragraph' style={{display: 'none'}}>Aún no tienes ningún perro en la lista de adopciones, ¡añade uno!</p>   
                         
                         <Row className='justify-content-around'>
-                            
+                                
                             {this.state.showList && <>
 
                                 {this.state.dogs.map(elm => <ProDogCard key={elm._id} {...elm} />)}
@@ -107,6 +120,9 @@ class Profile extends Component {
                             </>}
 
                         </Row>
+                                
+
+                                
 
                         <Modal size='lg'  show={this.state.showModal} onHide={() => this.handleModal(false)}>
                             
@@ -128,13 +144,13 @@ class Profile extends Component {
 
               
 
-                {this.handleformUser() == false && <Container fluid>
+                {this.handleformUser() === false && <Container fluid>
 
                     <Row style={{ textAlign: 'left' }}>
                     
                         <Col>
                             
-                            <img className="logo-perfil" src={perfilLogo} />
+                            <img alt="profile" className="logo-perfil" src={perfilLogo} />
 
                             <h2>Bienvenido {this.props.loggedInUser.username}</h2>
 
@@ -152,12 +168,14 @@ class Profile extends Component {
 
                 <Row>
                     
-                    <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }} className='button'>Volver</Link>
+                    <Link to={'/'} style={{ textDecoration: 'none', color: 'black', marginTop: '150px' }} className='button'>Volver</Link>
                 
                 </Row>
 
 
             </Container>
+
+            </Fade>
 
         )
     }

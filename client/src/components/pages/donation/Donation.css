@@ -33,5 +33,23 @@
     display: block;
 }
 
+@media (max-width: 900px) {
 
+    .donation h1 {
+        padding-left: 0%;
+    }
+
+    .donation p {
+        font-size: 1.5em;
+    }
+
+    .donation img {
+        height: 120px;
+        margin-left: 20%;
+    }
+
+    .donation .link {
+        margin-left: 10%;
+    }
+}
 

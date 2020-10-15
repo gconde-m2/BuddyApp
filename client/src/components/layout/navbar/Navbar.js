@@ -18,8 +18,9 @@ export default class extends Component {
     constructor(props) {
         super(props)
         this.state = {
-        
-            showModal: false
+
+            showModal: false,
+            
         }
         this.authService = new authService()
     }
@@ -30,50 +31,51 @@ export default class extends Component {
             .catch(err => console.log('ERRORR!!:', err))
     }
 
+
     handleModal = showModal => this.setState({ showModal })
     render() {
-        //console.log(this.props)
+
+
         return (
-
             <>
-                
-            <Navbar className='navbar'>
-                
-              <Link to='/'> <img alt="Logotipo" src={logoTitulo} className='logoNav'/> </Link>
-            
-              <Nav className='navigation'>
+                <Navbar collapseOnSelect expand="lg" variant="dark">
+                    <Nav.Link href="#" ><Link to='/'> <img alt="Logotipo" src={logoTitulo} className='logoNav' /> </Link></Nav.Link>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav"  />
+                    <Navbar.Collapse className=" right-menu" id="responsive-navbar-nav ">
 
-                    <Link className='navlink' style={{textDecoration: 'none', color: 'black'}} to="/dogList">Adopta</Link>
-                    <Link className='navlink' style={{textDecoration: 'none', color: 'black'}} to="/donation">Ayuda</Link>
-                    <Link className='navlink' style={{textDecoration: 'none', color: 'black'}} to="/map">Mapa</Link>
-                    <Link className='navlink' style={{textDecoration: 'none', color: 'black'}} to="/stadistics">Datos</Link>
-                    {!this.props.loggedInUser && <Link className='navlink' style={{textDecoration: 'none', color: 'black'}} to="/signup">Registro</Link>}
-                    {!this.props.loggedInUser && <div className="navlink" onClick={() => this.handleModal(true)} style={{ marginBottom: '20px' }} variant="dark" size="sm">Login</div>}
-                    {this.props.loggedInUser && <Link to = "/profile" className="navlink"  style={{textDecoration: 'none', color: 'black'}}>Perfil</Link>}
-                    {this.props.loggedInUser && <div className="navlink" onClick={this.logoutUser}>Cerrar sesión</div>}
-  
-                </Nav>
-                    
-            </Navbar>
-                
-            <Modal show={this.state.showModal} onHide={() => this.handleModal(false)}>
-                    
-                <Modal.Header closeButton>
-                        
-                    <Modal.Title >Login</Modal.Title>
+                        <Nav >
+                        <Nav.Link href="#"> <Link className='navlink' style={{ textDecoration: 'none', color: 'black' }}  to="/dogList" >Adopta</Link></Nav.Link>
+                  <Nav.Link href="#"><Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/donation">Ayuda</Link></Nav.Link>
+                  <Nav.Link href="#"> <Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/map">Mapa</Link></Nav.Link>
+                  <Nav.Link href="#"><Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/stadistics">Datos</Link></Nav.Link>
+                  {!this.props.loggedInUser && <Nav.Link href="#"><div className="navlink" onClick={() => this.handleModal(true)}  variant="dark" size="sm">Login</div></Nav.Link>}
+                  {!this.props.loggedInUser && <Nav.Link href="#"><Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/signup">Registro</Link></Nav.Link>}
+                  {this.props.loggedInUser && <Nav.Link href="#"><Link to="/profile" className="navlink" style={{ textDecoration: 'none', color: 'black' }}>Perfil</Link></Nav.Link>}          
+                  {this.props.loggedInUser && <Nav.Link href="#"><div className="navlink" onClick={this.logoutUser}>Cerrar sesión</div></Nav.Link>}         
 
-                </Modal.Header>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
 
-                <Modal.Body >
-                        
-                    <Login show={this.state.showModal} setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser} closeModal={() => this.handleModal(false)} />
-                        
-                </Modal.Body>
 
-            </Modal>
-                
+                <Modal className="modal-login" show={this.state.showModal} onHide={() => this.handleModal(false)}>
+
+                    <Modal.Header closeButton>
+
+                        <Modal.Title >Login</Modal.Title>
+
+                    </Modal.Header>
+
+                    <Modal.Body >
+
+                        <Login show={this.state.showModal} setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser} closeModal={() => this.handleModal(false)} />
+
+                    </Modal.Body>
+
+                </Modal>
+
             </>
-                   
+
         )
     }
 }

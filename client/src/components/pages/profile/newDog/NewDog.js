@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 import DogService from '../../../../service/dogs.service'
 import FileService from '../../../../service/files.service'
+import Alert from '../../../shared/alert/Alert'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -27,13 +28,17 @@ class NewDog extends Component {
                 imageUrl: '',
                 owner: this.props.loggedInUser ? this.props.loggedInUser._id : ''
             },
-            uploadingImg: false
+            uploadingImg: false,
+            showToast: false,
+            showModal: false
         }
 
         this.dogService = new DogService()
 
         this.fileService = new FileService()
     }
+
+
 
     handleInputChange = e => {
 
@@ -48,8 +53,13 @@ class NewDog extends Component {
 
         this.dogService
             .newDog(this.state.dog)
-            .then(() => this.props.history.push('/profile'))
+            .then(() => {
+                this.props.closeModal()
+                this.props.history.push('/profile')
+            })
             .catch(error => console.log('Error!', error))
+        
+        this.setState({ showToast: true })
     }
 
 
@@ -131,7 +141,7 @@ class NewDog extends Component {
                                 
                          <br></br>
 
-                        <button type='submit'  disabled={this.state.uploadingImg}>{this.state.uploadingImg ? 'Añadiendo...' : 'Añadir perro'}</button>
+                                <button type='submit' disabled={this.state.uploadingImg}>{this.state.uploadingImg ? 'Añadiendo...' : 'Añadir perro'}</button>
 
                                 
                         </form>
@@ -143,6 +153,10 @@ class NewDog extends Component {
                         <Link to={'/profile'} style={{textDecoration: 'none', color: 'black'}} className='button'>Volver</Link>
 
                     </Row>
+
+                    
+                    {this.state.showToast && <Alert title='' text='¡Has añadido un perro a la lista de adopciones!' />}
+                        
 
                 </Container>
                     

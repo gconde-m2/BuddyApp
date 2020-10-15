@@ -35,55 +35,15 @@ class DogList extends Component {
 
     filterDogs = (sexValue) => {
 
-        console.log(sexValue)
-
-        if (sexValue.length > 1) {
-
-            this.setState({ dogs: this.state.dogs.filter(elm => elm.gender.toLowerCase() == (sexValue.toLowerCase())) })
-            
-        } else {
-
-            this.loadDogs()
-        }
+        (sexValue.length > 1) ? this.setState({ dogs: this.state.dogs.filter(elm => elm.gender.toLowerCase() === (sexValue.toLowerCase())) }) : this.loadDogs()
 
     }
 
 
     filterDogAge = (ageValue) => {
-         
-        console.log(ageValue)
 
-        if (ageValue.length > 0) {
-
-             this.setState({ dogs: this.state.dogs.filter(elm => elm.age == ageValue) }) 
-        
-        } else {
-
-            this.loadDogs()
-        }
-
+        (ageValue.length > 0) ? this.setState({ dogs: this.state.dogs.filter(elm => elm.age === ageValue) }) : this.loadDogs()
     }   
-    
-    
-    // searchDogs = (ageValue, sexValue) => {
-
-    //     console.log(this.state.dogs)
-
-    //     if (ageValue) {
-
-    //             this.setState({ dogs: this.state.dogs.filter(elm => (elm.age === ageValue)) })
-
-    //         } else if (sexValue) {
-
-    //             this.setState({ dogs: this.state.dogs.filter(elm => (elm.gender === sexValue)) })
-
-    //         } 
-    //         else {
-
-    //             this.setState({ dogs: this.state.dogs.filter(elm => (elm.age === ageValue) && (elm.gender === sexValue)) } )
-    //         }
-
-    // }
     
 
     render() {
@@ -97,9 +57,7 @@ class DogList extends Component {
                 <h1>Lista de perretes en adopción</h1> 
                     
                     <SearchBar filterMethod={this.filterDogs} filterMethodAge={this.filterDogAge} />
-                    
-                    {/* <SearchBar filterMethod={this.searchDogs} /> */}
-                
+                                    
                 <Row className='justify-content-around'>
 
                     {this.state.dogs.map(elm => <DogCard key={elm._id} {...elm} />)}

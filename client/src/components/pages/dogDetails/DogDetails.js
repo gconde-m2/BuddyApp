@@ -4,7 +4,8 @@ import Fade from 'react-reveal/Fade'
 import { Link } from 'react-router-dom'
 
 import dogService from '../../../service/dogs.service'
-import NodemailerForm from './nodemailer/NodemailerForm'
+import ContactForm from './contactForm/ContactForm'
+import Alert from '../../shared/alert/Alert'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -12,15 +13,16 @@ import Col from 'react-bootstrap/Col'
 import Modal from 'react-bootstrap/Modal'
 
 import './DogDetails.css'
-import dcha from './dcha.png'
-import izqda from './izqda.png'
+import dcha from './img/dcha.png'
+import izqda from './img/izqda.png'
 
-class DogDetails extends Component{
+class DogDetails extends Component {
     
     constructor(props) {
         super(props)
         this.state = {
             showModal: false,
+            showToast: false,
             dog: ''
         }
         this.dogService = new dogService()
@@ -36,7 +38,13 @@ class DogDetails extends Component{
 
     handleModal = showModal => this.setState({ showModal })
 
-    
+    handleToast = showToast => this.setState({ showToast })
+
+    endContact = () => {
+
+        this.handleModal(false)
+        this.handleToast(true)
+    }
 
     render() {
 
@@ -56,7 +64,7 @@ class DogDetails extends Component{
                         
                         <Fade clear duration={2000}>
                         
-                            <img className='dogPhoto' src={this.state.dog.imageUrl} alt='Doggy image' />
+                            <img className='dogPhoto' src={this.state.dog.imageUrl} alt='Doggy' />
                             
                         </Fade>
 
@@ -66,7 +74,7 @@ class DogDetails extends Component{
                         
                         <Fade clear duration={2000}>
 
-                        <article >
+                        <article>
 
                             <p>Edad: {this.state.dog.age} </p>
 
@@ -78,23 +86,26 @@ class DogDetails extends Component{
 
                             <button  onClick={() => this.handleModal(true)} className='details-link'>¡Adóptame!</button>
                             
-                            </article>
+                        </article>
                             
                         </Fade>
 
-                         <Modal size='lg'  show={this.state.showModal} onHide={() => this.handleModal(false)}>
+                        <Modal size='lg'  show={this.state.showModal} onHide={() => this.handleModal(false)} >
                             
                             <Modal.Header closeButton></Modal.Header>
 
-                            <Modal.Body >
+                            <Modal.Body>
                                 
-                                <NodemailerForm setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser} {...this.props} closeModal={() => this.handleModal(false)} />
+                                <ContactForm setTheUser={this.props.setTheUser} loggedInUser={this.props.loggedInUser} {...this.props} closeModal={() => this.endContact()} />
 
                             </Modal.Body>
 
-                            </Modal>
+                        </Modal>
 
                     </Col>
+
+                    {this.state.showToast && <Alert title='Mensaje enviado' text='En breve se pondrán en contacto contigo desde la protectora. ¡Gracias por ayudar a nuestros perretes!' />}
+
 
                     <Fade clear delay = {1300}>
 

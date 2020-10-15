@@ -1,0 +1,35 @@
+.pro-details-form label{
+    font-size: 1.7em;
+    font-weight: 200;
+    padding-right: 15px;
+}
+
+.pro-details-form input {
+    font-size: 1.5em;
+}
+
+.pro-details-form .button {
+    border-color: white;
+    transition: 0.2s;
+    margin-right: 50px;
+    background-color: #A4D6E0;
+}
+
+.buttonDelete {
+    background-color: #A4D6E0;
+    border-color: white;
+    
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+
+@media (max-width: 900px) {
+
+  #footprint1,#footprint2, #footprint3, #footprint4{
+      display:none;
+  }
+
+}

@@ -4,7 +4,9 @@ import axios from 'axios'
 import DogService from '../../../../service/dogs.service'
 import UserService from '../../../../service/users.service'
 
-class NodemailerForm extends Component {
+import './ContactForm.css'
+
+class ContactForm extends Component {
 
     constructor(props) {
         super(props)
@@ -82,23 +84,23 @@ class NodemailerForm extends Component {
 
             <form onSubmit={this.handleFormSubmit} id='contact-form' method='POST'>
 
-                    <label for='name'>Nombre</label>
-                    <input type='text' id='name' placeholder='Tu nombre'/>
+                <label for='name'>Nombre</label>
+                <input type='text' id='name' placeholder='Tu nombre'/> 
 
-                    <label for='emailUser'>De</label>
-                    <input type='email' id='emailUser' placeholder={this.state.user.email} />
+                <label for='emailUser'>De</label>
+                <input type='email' id='emailUser' value={this.state.user.email} /> <br></br>
 
-                    <label for='emailOwner'>Para</label>
-                    <input type='email' id='emailOwner' placeholder={this.state.owner.email} />
+                <label for='emailOwner'>Para</label>
+                <input type='email' id='emailOwner' value={this.state.owner.email} />
 
-                    <label for='subject'>Asunto</label>
-                    <input type='text' id='subject' placeholder={this.state.dog.name} />
+                <label for='subject'>Asunto</label>
+                <input type='text' id='subject' value={this.state.dog.name} /> <br></br>
 
-                    <label for='message'>Mensaje</label>
-                    <textarea id='message' placeholder='Cuéntale a la protectora que estás interesad@ en adoptar y ellos se pondrán en contacto contigo. Mandando este email no te comprometes a nada, ¡en cualquier momento puedes cambiar de opinión!'></textarea>
+                <label for='message'>Mensaje</label>
+                <textarea id='message' placeholder='Cuéntale a la protectora que estás interesad@ en adoptar y ellos se pondrán en contacto contigo. Mandando este email no te comprometes a nada, ¡en cualquier momento puedes cambiar de opinión!'></textarea> <br></br>
                     
-                    <button type='submit'>Enviar email</button>
-
+                <button type='submit'>Enviar email</button>
+        
             </form>
                 
             </>
@@ -106,4 +108,4 @@ class NodemailerForm extends Component {
     }
 }
 
-export default NodemailerForm
+export default ContactForm

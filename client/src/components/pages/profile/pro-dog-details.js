@@ -3,17 +3,17 @@ import Fade from 'react-reveal/Fade'
 
 import { Link } from 'react-router-dom'
 
-import dogService from '../../../service/dogs.service'
-
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import '../dogDetails/DogDetails.css'
-import dcha from '../dogDetails/dcha.png'
-import izqda from '../dogDetails/izqda.png'
+import dcha from '../dogDetails/img/dcha.png'
+import izqda from '../dogDetails/img/izqda.png'
 import DogService from '../../../service/dogs.service'
 import FileService from '../../../service/files.service'
+import Alert from '../../shared/alert/Alert'
+
+import './Pro-dog-details.css'
 class ProDogDetails extends Component {
 
     constructor(props) {
@@ -28,7 +28,8 @@ class ProDogDetails extends Component {
                 imageUrl: '',
                 owner: this.props.loggedInUser ? this.props.loggedInUser._id : ''
             },
-            uploadingImg: false
+            uploadingImg: false,
+            showToast: false
         }
 
         this.dogService = new DogService()
@@ -42,6 +43,9 @@ class ProDogDetails extends Component {
 
         this.setState({ dog: { ...this.state.dog, [name]: value } })
     }
+
+    handleToast = showToast => this.setState({ showToast })
+
 
     handleFormSubmit = e => {
 
@@ -101,7 +105,7 @@ class ProDogDetails extends Component {
 
                 </Fade>
 
-                <Row className='align-items-center justify-content-center' style={{ marginBottom: '50px' }}>
+                <Row className='align-items-start justify-content-center' style={{ marginBottom: '50px' }}>
 
                     <Col md={3}>
 
@@ -113,18 +117,18 @@ class ProDogDetails extends Component {
 
                     </Col>
 
-                    <Col md={7}>
+                    <Col sm={12} md={7}>
 
                         <Fade clear duration={2000}>
 
-                            <form onSubmit={this.handleFormSubmit}>
+                            <form onSubmit={this.handleFormSubmit} className='pro-details-form'>
 
                                 <label>Nombre</label>
 
                                 <input type='text' placeholder={this.state.name} name='name' onChange={this.handleInputChange} /> <br></br>
 
 
-                                <label>AÃ±os</label>
+                                <label>Años</label>
 
                                 <input type='number' placeholder={this.state.age}  name='age' onChange={this.handleInputChange} /> <br></br>
 
@@ -134,12 +138,12 @@ class ProDogDetails extends Component {
                                 <input type='text' placeholder={this.state.race}  name='race' onChange={this.handleInputChange} /> <br></br>
 
 
-                                <label>DescripciÃ³n</label>
+                                <label>Descripción</label>
 
                                 <input type='text' name="description" placeholder={this.state.description}  onChange={this.handleInputChange} /> <br></br>
 
 
-                                <select select name='gender' onChange={this.handleInputChange} >
+                                <select select name='gender' onChange={this.handleInputChange} style={{marginBottom: '40px'}}>
 
                                     <option value=''>Sexo</option>
 
@@ -149,17 +153,27 @@ class ProDogDetails extends Component {
 
                                 </select>
 
+                                <br></br>
+
 
                                 <label>Seleccionar imagen</label>
 
-                                <input type="file" name="imageUrl" onChange={this.handleImageUpload} />
+                                <input type="file" name="imageUrl" onChange={this.handleImageUpload} /> <br></br>
 
 
-                                <button className='button' type='submit' disabled={this.state.uploadingImage}>{this.state.uploadingImage ? 'modificando...' : 'Modificar'}</button>
+                                <button className='button' type='submit' disabled={this.state.uploadingImage} >{this.state.uploadingImage ? 'modificando...' : 'Modificar'}</button>
 
                             </form>
-                                <button   onClick={ this.handleDelete}className='button' >Borrar</button>
 
+                            <div >
+
+                                <button onClick={this.handleDelete} className='buttonDelete button' onClick={() => { this.handleToast(true) }} >Borrar</button>
+                            
+                                {this.state.showToast && <Alert title='' text='Se ha eliminado un perro de tu lista' />}
+
+                            </div>
+
+                               
                         </Fade>
 
                     </Col>

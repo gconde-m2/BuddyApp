@@ -23,3 +23,32 @@
     margin-bottom: 50px;
 }
 
+@media (max-width: 900px) {
+
+    .searchForm h4 {
+        font-size: 1.3em;
+        text-align: center;
+        padding-top: 0%;
+    }
+
+    .searchForm select {
+        display: block;
+        font-size: 0.8em;
+        margin-left: 35%;
+    }
+
+    .searchForm label {
+        display: inline;
+        padding-left: 8%;
+        font-size: 0.9em;
+    }
+
+    .searchForm input {
+
+        font-size: 0.8em;
+        display: inline;
+    }
+
+    
+
+}

@@ -47,9 +47,7 @@ router.post('/signup', (req, res, next) => {
 //         }
 //     })
     
-    console.log(paco)
-    if (paco == 1)
-        return
+
         User.findOne({username}, (err, foundUser) => {
             
         if (err) {

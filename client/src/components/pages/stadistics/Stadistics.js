@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2'
+import { Bar, Line, Doughnut } from 'react-chartjs-2'
 import Fade from 'react-reveal/Fade'
 
 import Container from 'react-bootstrap/Container'

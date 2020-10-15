@@ -50,9 +50,31 @@
     font-size: 1em;
 }
 
-.alert{
-    color:red;
+.alert {
+    color: red;
     text-align: center;
-  }
+}
 
-   
+@media (max-width: 900px) {
+
+    .logosign {
+       
+        margin-top: 10px;
+    
+    }
+    .firstBtn {
+       margin-bottom: 20px;
+
+    }
+    .padding-bot{
+
+        margin-bottom: 100px;
+    }
+    .block h1{
+        margin-top: 0px;
+    }
+    .logosign {
+       display:none
+    
+    }
+ }

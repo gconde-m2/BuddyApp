@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 
+import { Link } from 'react-router-dom'
+
+import Fade from 'react-reveal/Fade'
+
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+
 import './Maps.css'
-import UserIcon from './marcador.png'
-import ASIcon from './asociaciones.png'
+import UserIcon from './img/marcador.png'
+import ASIcon from './img/asociaciones.png'
 
 
 export default class Maps extends Component {
@@ -21,7 +28,6 @@ export default class Maps extends Component {
     
     const script = document.createElement('script');
     script.src = "https://maps.googleapis.com/maps/api/js?key=paco&libraries=places";
-   
     script.async = true;
     script.defer = true;
     script.addEventListener('load', () => {
@@ -130,8 +136,33 @@ export default class Maps extends Component {
     }
   }
   render() {
-    return ( <
-      div id = "map" / >
+    return (
+
+      <>
+        
+        <Fade clear delay={600}>
+        
+        <h1>Encuentra tu protectora más cercana</h1>
+
+        <Container fluid>
+
+          <Row>
+            
+            <div id="map" />
+ 
+          </Row>
+
+          <Row>
+
+            <Link to={'/'} style={{ textDecoration: 'none', color: 'black', marginLeft: '5%', marginBottom: '200px', display: 'inline'}} className='button'>Volver</Link>
+
+          </Row>
+
+        </Container>
+          
+        </Fade>
+        
+      </>
     );
   }
 }

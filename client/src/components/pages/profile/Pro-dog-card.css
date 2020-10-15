@@ -1,0 +1,9 @@
+.dog-card .link {
+    font-size: 2em;
+}
+
+@media (max-width: 900px) {
+    .dog-card .link {
+        font-size: 1.2em;
+    }
+}

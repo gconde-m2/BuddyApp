@@ -6,7 +6,6 @@ import Row from 'react-bootstrap/Row'
 
 import '../dogList/DogCard'
 
-
 const ProDogCard = ({ _id, name, imageUrl }) => {
 
     return (

@@ -27,15 +27,19 @@ class SignUp extends Component {
             showUserForm: false,
             showAsocForm: false
             },
-        message: undefined,
-        uploadingImg: false,
 
-        }  
+            uploadingImg: false,
+
+            }
+             
         this.authService = new AuthService()
+            
         this.fileService = new FileService()
-    }
+    
+        
+        }
        
-
+   
     handleInputChange = e => {
         const { name, value } = e.target
         this.setState({ user: { ...this.state.user, [name]: value }})
@@ -112,10 +116,10 @@ class SignUp extends Component {
                         
                     <Col md={{ span: 6 }} style={{paddingLeft: '8%'}}>
                             
-                        <Button onClick={() => this.handleFormAsoc(true)} className='firstBtn'>Crear cuenta como asociación</Button>
+                        <Button onClick={() => this.handleFormAsoc(true)} className='firstBtn padding-bot'>Crear cuenta como asociación</Button>
                         
-                    
                     </Col>
+                    
                 </Row>
                 
             </Container>
@@ -152,7 +156,9 @@ class SignUp extends Component {
                                         <Button variant="dark" type="submit" className="firstBtn">Registrarme</Button>
                                     
                                     </div>
-                                    <p className="alert">{this.state.message}</p>
+
+                                     <p className="alert">{this.state.message}</p>
+
                                 </Form>
                             
                             </Col>
@@ -210,7 +216,9 @@ class SignUp extends Component {
                                         <Button variant="dark" type="submit" className="firstBtn">Registrarme</Button>
                                     
                                     </div>
+
                                     <p className="alert">{this.state.message}</p>
+                                
                                 </Form>
                             
                             </Col>

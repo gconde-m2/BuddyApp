@@ -1,32 +1,54 @@
 import React, { Component } from 'react'
 import Fade from 'react-reveal/Fade'
 import { Link } from 'react-router-dom'
-import MyComponent from './Vivus'
-import Vivus from 'vivus'
-import ReactVivus from 'react-vivus'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Carousel from 'react-bootstrap/Carousel'
 
+import MyComponent from './Vivus'
+
 import './Index.css'
-import buddy from './Buddy.png'
-import footprint from './footprint.svg'
-import animatedFootprint from './footprint_animated.svg'
+import buddy from './img/Buddy.png'
+
+
 class Index extends Component {
 
-    constructor() {
-        super()
+   
+
+    componentDidMount() {
+        
+        window.addEventListener('scroll', this.applyScrollEffects)
+        
     }
 
-     componentDidMount() {
-        
-        
 
-     }
+    applyScrollEffects() {
+
+        const isInViewport = el => {
+            const rect = el.getBoundingClientRect()
+            const vertInView = (rect.top <= window.innerHeight - window.innerHeight / 2) && ((rect.top + rect.height) >= 0)
+            const horInView = (rect.left <= window.innerWidth) && ((rect.left + rect.width) >= 0)
+            return (vertInView && horInView)
+        }
+    
+
+         document.querySelectorAll('.change-background').forEach(elm => {
+            if (isInViewport(elm)) {
+                document.querySelector('.section2').classList.add('on')
+            } else {
+                document.querySelector('.section2').classList.remove('on')
+            }
+        })
+
+       
+    }
+
+    
 
     render() {
+    
         return (
             <>
                 <Container className='section1'>
@@ -92,22 +114,14 @@ class Index extends Component {
                     
                             <Col md={5}>
                         
-                                <p style={{ width: '80%' }}>"Podemos juzgar el corazón de un hombre por cómo trata a los animales"<span style={{ marginTop: '20px', display: 'block' }}>Immanuel Kant</span></p>
+                                <p style={{ width: '80%' }} className='change-background'>"Podemos juzgar el corazón de un hombre por cómo trata a los animales"<span style={{ marginTop: '20px', display: 'block' }}>Immanuel Kant</span></p>
                         
                             </Col>
 
                             <Col md={2}>
                                 
-                           
-                   
-               
-                                  
-                              
-                                
-                                <MyComponent/>
-                              
-           
-                               
+                                <MyComponent />
+
                             </Col>
 
                         </Row>
