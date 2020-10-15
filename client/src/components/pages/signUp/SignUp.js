@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button'
 import AuthService from '../../../service/auth.service'
 import FileService from '../../../service/files.service'
 
-import './Signup.css'
+import './signup.css'
 
 import logo from '../../layout/navbar/logoTitulo.png'
 
