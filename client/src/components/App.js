@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Index from './pages/index/Index'
+
 import Navigation from './layout/navbar/Navbar'
 import Footer from './layout/footer/Footer'
 import SignUp from './pages/signUp/SignUp'
@@ -15,7 +16,7 @@ import Profile from './pages/profile/Profile'
 import ProDogDetails from './pages/profile/Prodogdetails'
 
 import authService from './../service/auth.service'
-
+//
 
 class App extends Component {
 
