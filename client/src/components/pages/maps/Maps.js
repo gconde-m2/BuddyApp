@@ -27,7 +27,7 @@ export default class Maps extends Component {
   componentDidMount() {
     
     const script = document.createElement('script');
-    script.src = "https://maps.googleapis.com/maps/api/js?key=paco&libraries=places";
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAwoOjHe-xg4DTpD5kbdH8n1XkmZEEgb3o&libraries=places";
     script.async = true;
     script.defer = true;
     script.addEventListener('load', () => {

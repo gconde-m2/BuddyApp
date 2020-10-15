@@ -20,7 +20,7 @@ export default class extends Component {
         this.state = {
 
             showModal: false,
-            
+
         }
         this.authService = new authService()
     }
@@ -40,18 +40,18 @@ export default class extends Component {
             <>
                 <Navbar collapseOnSelect expand="lg" variant="dark">
                     <Nav.Link href="#" ><Link to='/'> <img alt="Logotipo" src={logoTitulo} className='logoNav' /> </Link></Nav.Link>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav"  />
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse className=" right-menu" id="responsive-navbar-nav ">
 
                         <Nav >
-                        <Nav.Link href="#"> <Link className='navlink' style={{ textDecoration: 'none', color: 'black' }}  to="/dogList" >Adopta</Link></Nav.Link>
-                  <Nav.Link href="#"><Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/donation">Ayuda</Link></Nav.Link>
-                  <Nav.Link href="#"> <Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/map">Mapa</Link></Nav.Link>
-                  <Nav.Link href="#"><Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/stadistics">Datos</Link></Nav.Link>
-                  {!this.props.loggedInUser && <Nav.Link href="#"><div className="navlink" onClick={() => this.handleModal(true)}  variant="dark" size="sm">Login</div></Nav.Link>}
-                  {!this.props.loggedInUser && <Nav.Link href="#"><Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/signup">Registro</Link></Nav.Link>}
-                  {this.props.loggedInUser && <Nav.Link href="#"><Link to="/profile" className="navlink" style={{ textDecoration: 'none', color: 'black' }}>Perfil</Link></Nav.Link>}          
-                  {this.props.loggedInUser && <Nav.Link href="#"><div className="navlink" onClick={this.logoutUser}>Cerrar sesión</div></Nav.Link>}         
+                            <Nav.Link href="#"> <Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/dogList" >Adopta</Link></Nav.Link>
+                            <Nav.Link href="#"><Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/donation">Ayuda</Link></Nav.Link>
+                            <Nav.Link href="#"> <Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/map">Mapa</Link></Nav.Link>
+                            <Nav.Link href="#"><Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/stadistics">Datos</Link></Nav.Link>
+                            {!this.props.loggedInUser && <Nav.Link href="#"><div className="navlink" onClick={() => this.handleModal(true)} variant="dark" size="sm">Login</div></Nav.Link>}
+                            {!this.props.loggedInUser && <Nav.Link href="#"><Link className='navlink' style={{ textDecoration: 'none', color: 'black' }} to="/signup">Registro</Link></Nav.Link>}
+                            {this.props.loggedInUser && <Nav.Link href="#"><Link to="/profile" className="navlink" style={{ textDecoration: 'none', color: 'black' }}>Perfil</Link></Nav.Link>}
+                            {this.props.loggedInUser && <Nav.Link href="#"><div className="navlink" onClick={this.logoutUser}>Cerrar sesión</div></Nav.Link>}
 
                         </Nav>
                     </Navbar.Collapse>
