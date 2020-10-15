@@ -4,7 +4,7 @@ import axios from 'axios'
 import DogService from '../../../../service/dogs.service'
 import UserService from '../../../../service/users.service'
 
-import './ContactForm.css'
+import './contactform.css'
 
 class ContactForm extends Component {
 

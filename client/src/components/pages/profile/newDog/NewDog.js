@@ -11,7 +11,7 @@ import Alert from '../../../shared/alert/Alert'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
-import './NewDog.css'
+import './newdog.css'
 
 
 class NewDog extends Component {

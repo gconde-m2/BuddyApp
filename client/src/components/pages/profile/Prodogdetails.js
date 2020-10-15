@@ -13,7 +13,7 @@ import DogService from '../../../service/dogs.service'
 import FileService from '../../../service/files.service'
 import Alert from '../../shared/alert/Alert'
 
-import './Pro-dog-details.css'
+import './prodogdetails.css'
 class ProDogDetails extends Component {
 
     constructor(props) {

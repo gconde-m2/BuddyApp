@@ -11,7 +11,7 @@ import Modal from 'react-bootstrap/Modal'
 
 import dogsService from '../../../service/dogs.service'
 
-import './Profile.css'
+import './profile.css'
 import perfilLogo from './perfil.png'
 import Newdog from './newDog/NewDog'
 import ProDogCard from './Pro-dog-card'

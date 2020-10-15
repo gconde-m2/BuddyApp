@@ -12,7 +12,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Modal from 'react-bootstrap/Modal'
 
-import './DogDetails.css'
+import './dogdetails.css'
 import dcha from './img/dcha.png'
 import izqda from './img/izqda.png'
 

@@ -7,7 +7,7 @@ import Fade from 'react-reveal/Fade'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
-import './Maps.css'
+import './maps.css'
 import UserIcon from './img/marcador.png'
 import ASIcon from './img/asociaciones.png'
 

@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import './LogIn.css'
+import './login.css'
 import logo from '../../layout/navbar/logoTitulo.png'
 import authService from '../../../service/auth.service'
 

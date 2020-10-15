@@ -9,7 +9,7 @@ import Carousel from 'react-bootstrap/Carousel'
 
 import MyComponent from './Vivus'
 
-import './Index.css'
+import './index.css'
 import buddy from './img/Buddy.png'
 
 

@@ -3,7 +3,7 @@ import Fade from 'react-reveal/Fade'
 
 import DogCard from './DogCard'
 import SearchBar from './searchBar/SearchBar'
-import './DogList.css'
+import './doglist.css'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'

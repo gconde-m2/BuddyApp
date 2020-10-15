@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col'
 import donation from './img/donacion.png'
 import volunteer from './img/voluntario.png'
 
-import './Donation.css'
+import './donation.css'
 
 class Donation extends Component {
 

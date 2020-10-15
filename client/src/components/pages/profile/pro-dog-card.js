@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
 import '../dogList/DogCard'
-
+import './prodogcard.css'
 const ProDogCard = ({ _id, name, imageUrl }) => {
 
     return (
