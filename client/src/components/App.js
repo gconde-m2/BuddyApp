@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Index from './pages/index/index'
+import Index from './pages/index/indexd'
 
 import Navigation from './layout/navbar/Navbar'
 import Footer from './layout/footer/Footer'
