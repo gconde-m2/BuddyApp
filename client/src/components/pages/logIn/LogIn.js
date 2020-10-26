@@ -15,7 +15,7 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            message: undefined
+            message :  undefined,
         }
         this.authService = new authService()
     }
@@ -38,30 +38,35 @@ class Login extends Component {
                     this.setState({ message: response })
                     this.props.setTheUser(response.data)
 
-                    //this.props.history.push('/')
                     this.props.closeModal()
                 })
-                .catch(err => console.log('Erroooooor:', { err }))
+                .catch(err => {
+                    console.log('Error:', { err }) 
+                    this.setState({ message:'Contraseña o usuario incorrecto'})})
+                    .catch(err => console.log('Erroooooor:', { err }))
         }
         else {
-            if (this.state.username.length < 1 && this.state.password.length < 1) {
-                let value = 'campos vacios'
-                this.setState({ message: value })
-            }
-            else if (this.state.username.length < 1) {
-                let value = 'introduce el username'
-                this.setState({ message: value })
 
-            } else {
-                let value = 'introduce la contraseña'
-                this.setState({ message: value })
+                if (this.state.username.length < 1 && this.state.password.length < 1) {
+                    let value = 'campos vacios'
+                    this.setState({ message: value })
+                }
+                else if (this.state.username.length < 1) {
+                    let value = 'Introduce el usuario'
+                    this.setState({ message: value })
+    
+                } 
+                else if (this.state.password.length < 1){
+                    let value = 'Introduce la contraseña'
+                    this.setState({ message: value }) 
             }
+            
         }
     }
-
-
+    
+    
     render() {
-
+      
         return (
 
             <Container>
@@ -95,14 +100,16 @@ class Login extends Component {
                                 <div className=" justify-content-center">
                                    
                                     <Button variant="dark" type="submit">Acceder</Button>
-                                
-                                </div>
+                                </div>  
 
                             </Form>
+                                    <>
+                                   <div className="alert">{this.state.message?this.state.message.toString():null}</div>
+                                   </>
 
                         </Col>
 
-                    </Row>
+                    </Row> 
 
                 </main>
 

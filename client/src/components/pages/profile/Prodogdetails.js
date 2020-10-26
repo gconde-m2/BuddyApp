@@ -64,6 +64,8 @@ class ProDogDetails extends Component {
             .deleteDog(this.props.match.params.dog_id)
             .then(() => this.props.history.push('/profile'))
             .catch(error => console.log('Error!', error))
+
+         this.handleToast(true)   
     }
 
 
@@ -75,11 +77,11 @@ class ProDogDetails extends Component {
 
         uploadData.append('imageUrl', e.target.files[0])
 
-        this.filesService
+        this.fileService
             .uploadImage(uploadData)
             .then(response => this.setState({
                 dog: { ...this.state.dog, imageUrl: response.data.secure_url },
-                uploadingImage: null
+                uploadingImg: null
             }))
             .catch(error => console.log('Error!', error))
 
@@ -167,7 +169,7 @@ class ProDogDetails extends Component {
 
                             <div >
 
-                                <button onClick={this.handleDelete} className='buttonDelete button' onClick={() => { this.handleToast(true) }} >Borrar</button>
+                                <button onClick={this.handleDelete} className='buttonDelete button' >Borrar</button>
                             
                                 {this.state.showToast && <Alert title='' text='Se ha eliminado un perro de tu lista' />}
 

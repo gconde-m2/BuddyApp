@@ -56,11 +56,13 @@ class SignUp extends Component {
                 this.props.setTheUser(response.data)
                 this.props.history.push('/')
             })
-            .catch(err => {
+            .catch(error => {
               
-                this.setState({  message: err.response.data.message })
+                this.setState({  message: error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message })
                 
-                console.log('Error:',  err )})
+                console.log('Error:',  error )})
     }
 
     handleFormUser = e => {

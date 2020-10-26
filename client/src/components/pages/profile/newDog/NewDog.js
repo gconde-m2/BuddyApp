@@ -55,7 +55,6 @@ class NewDog extends Component {
             .newDog(this.state.dog)
             .then(() => {
                 this.props.closeModal()
-                this.props.history.push('/profile')
             })
             .catch(error => console.log('Error!', error))
         

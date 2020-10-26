@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Index from './pages/index/index'
+import Index from './pages/index/index.js'
 
 import Navigation from './layout/navbar/Navbar'
 import Footer from './layout/footer/Footer'
@@ -60,7 +60,7 @@ class App extends Component {
           <Route path="/profile" exact render={() => <Profile loggedInUser={this.state.loggedInUser} />} /> 
           <Route path="/profile/profile-dogList/:dog_id"  render = {props => this.state.loggedInUser ? <ProDogDetails loggedInUser={this.state.loggedInUser } {...props} /> : <Redirect to="/login" />} />
           <Route path="/signup"  exact render={props => <SignUp setTheUser={this.setTheUser} {...props}/>}></Route>
-          <Route path="/login"  render={props => <LogIn setTheUser={this.setTheUser} {...props} />} />
+         {/* // <Route path="/login"  render={props => <LogIn setTheUser={this.setTheUser} {...props} />} /> */}
           <Route path="/stadistics"  render= {() => <Stadistics/>} />
 
         </Switch>

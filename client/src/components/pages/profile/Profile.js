@@ -32,7 +32,7 @@ class Profile extends Component {
      }
      
         componentDidMount = () => this.loadDogs()
-    
+     
         loadDogs() {
 
           this.dogsService
@@ -54,17 +54,19 @@ class Profile extends Component {
     
 
         dogfilter() {
+           
             let aux = this.state.dogs.filter(elm => elm.owner === this.props.loggedInUser._id)
             if (this.state.showList === true) {
-                this.state.showList = false
+                this.setState({ showList: false })
                 document.getElementById('paragraph').setAttribute('style', 'display: block',)
             } else {
-                this.state.showList = true
+                this.setState({ showList: true})
                 this.setState({ dogs: aux })
                 document.getElementById('paragraph').setAttribute('style', 'display: none', )
 
                 
             }
+          
         }
 
 
@@ -113,11 +115,11 @@ class Profile extends Component {
                         
                         <Row className='justify-content-around'>
                                 
-                            {this.state.showList && <>
+                            {this.state.showList &&
 
-                                {this.state.dogs.map(elm => <ProDogCard key={elm._id} {...elm} />)}
+                                this.state.dogs.map(elm => <ProDogCard key={elm._id} {...elm} />)
 
-                            </>}
+                            }
 
                         </Row>
                                 

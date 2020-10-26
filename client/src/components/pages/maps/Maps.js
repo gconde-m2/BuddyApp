@@ -27,7 +27,7 @@ export default class Maps extends Component {
   componentDidMount() {
     
     const script = document.createElement('script');
-    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAwoOjHe-xg4DTpD5kbdH8n1XkmZEEgb3o&libraries=places";
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCrGy_pMf19tWr0zv-epIEy_0b6ejOVa58&libraries=places";
     script.async = true;
     script.defer = true;
     script.addEventListener('load', () => {
@@ -81,9 +81,9 @@ export default class Maps extends Component {
       });
       var pinIcon = new window.google.maps.MarkerImage(
         UserIcon,
-        null, /* size is determined at runtime */
-        null, /* origin is 0,0 */
-        null, /* anchor is bottom center of the scaled image */
+        null, 
+        null, 
+        null, 
         new window.google.maps.Size(42, 42)
       );
       const cityCircle = new window.google.maps.Circle({

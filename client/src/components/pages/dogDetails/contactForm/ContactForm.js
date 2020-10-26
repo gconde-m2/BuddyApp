@@ -26,20 +26,24 @@ class ContactForm extends Component {
          
          this.dogService
              .getOneDog(this.props.match.params.dog_id)
-             .then(response => this.setState({ dog: response.data }))
+             .then(response => {
+                 
+                 this.setState({ dog: response.data })
+                
+                 this.getOwner(response.data)
+                })
              .catch(error => console.log('Error!', error))
          
-        //   this.getOwner()
         
      }
     
-    getOwner = () => {
-        
+    getOwner = (dog) => {
+        console.log(dog)
         this.userService
-             .getOneUser(this.state.dog.owner)
+             .getOneUser(dog.owner)
              .then(response => this.setState({ owner: response.data }))
              .catch(error => console.log('Error!', error))
-        
+        console.log()
     }
 
     handleFormSubmit = async(e) => {
@@ -77,7 +81,7 @@ class ContactForm extends Component {
 
 
     render() {
-
+        console.log(this.props)
         return (
 
             <>
@@ -88,7 +92,7 @@ class ContactForm extends Component {
                 <input type='text' id='name' placeholder='Tu nombre'/> 
 
                 <label for='emailUser'>De</label>
-                <input type='email' id='emailUser' value={this.state.user.email} /> <br></br>
+                <input type='email' id='emailUser' value={this.props.loggedInUser && this.props.loggedInUser.email} /> <br></br>
 
                 <label for='emailOwner'>Para</label>
                 <input type='email' id='emailOwner' value={this.state.owner.email} />
